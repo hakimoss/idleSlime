@@ -1,0 +1,11 @@
+package com.hakim.personnages;
+
+public class Personnages {
+	
+	
+	
+	
+	public Personnage() {
+		
+	}
+}

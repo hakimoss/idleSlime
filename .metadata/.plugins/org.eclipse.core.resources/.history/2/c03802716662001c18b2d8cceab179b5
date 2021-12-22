@@ -1,0 +1,12 @@
+package com.hakim;
+
+import javax.swing.JPanel;
+
+public class MenuScene extends JPanel {
+
+	
+	
+	public MenuScene() {
+		
+	}
+}
