@@ -1,0 +1,74 @@
+package com.hakim;
+
+import com.hakim.personnages.Hero;
+import com.hakim.personnages.Personnages;
+
+public class Combat implements Runnable {
+	private Hero hero;
+	private Personnages personnage;
+	private int compteurDmgString = 0;
+	private boolean showDmg = false;
+	
+	public void combatEntrePersonnages(Hero hero, Personnages enemi) {
+		this.personnage = enemi;
+		this.hero = hero;
+		this.hero.compteurCombat = 0;
+		
+		
+		Thread chronoCombat= new Thread(this);
+		
+		if(this.hero.isVivant() == true && this.personnage.isVivant() == true) {
+			chronoCombat.start();	
+		} 
+	}
+	
+	//   GETTERS   //
+	public boolean isShowDmg() {return showDmg;}
+
+	//   SETTERS   //
+	public void setShowDmg(boolean showDmg) {this.showDmg = showDmg;}
+	
+	
+	//   METHODS   //
+	@Override
+	public void run() {
+		
+		System.out.println(this.showDmg);
+		
+		while(this.hero.isEnCombat() == true) {
+			this.showDmg = true;
+			try {
+				System.out.println("enemie life : "+this.personnage.getHealth());
+				System.out.println("hero life : "+this.hero.getHealth());
+				Thread.sleep(1000);
+				this.hero.setHealth(this.hero.getHealth() - this.personnage.getDmg());
+				this.personnage.setHealth(this.personnage.getHealth() - this.hero.getDmg());
+				
+				for(int i = 0; i < 10; i++) {
+					
+					Thread.sleep(100);
+					System.out.println(i);
+					
+					this.compteurDmgString = this.compteurDmgString + i;
+					Main.scene.setyDmgString(this.compteurDmgString);
+				}
+				Main.scene.setyDmgString(0);
+				
+				if(this.hero.getHealth() <= 0) {
+					this.hero.setVivant(false);
+				} else if (this.personnage.getHealth() <= 0) {
+					this.personnage.setVivant(false);
+					this.hero.setEnCombat(false);
+				}
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+	
+	
+	
+}

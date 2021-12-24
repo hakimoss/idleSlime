@@ -1,0 +1,31 @@
+package com.hakim;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class MenuScene extends Components {
+
+	JLabel labelHealth;
+	JButton btnHealth;
+	
+	JLabel labelDmg;
+	JButton btnDmg;
+	
+	public MenuScene() {
+		super();
+		
+		this.setSize(400,600);
+		labelHealth = new JLabel("health");
+		btnHealth = new JButton("UP Health");
+		
+		labelDmg = new JLabel("dmg");
+		btnDmg = new JButton("UP Dmg");
+		
+		this.add(labelHealth);
+		this.add(btnHealth);
+		this.add(labelDmg);
+		this.add(btnDmg);
+	}
+}

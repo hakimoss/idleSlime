@@ -2,7 +2,24 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="javax.swing.JPanel"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
-    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+    <fullyQualifiedTypeName name="com.hakim.personnages.Enemi"/>
+    <fullyQualifiedTypeName name="com.hakim.Combat"/>
     <fullyQualifiedTypeName name="com.hakim.Main"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+    <fullyQualifiedTypeName name="javax.swing.JButton"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="com.hakim.Scene"/>
     <fullyQualifiedTypeName name="com.hakim.personnages.Hero"/>
+    <fullyQualifiedTypeName name="java.net.URL"/>
+    <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
+    <fullyQualifiedTypeName name="javax.swing.border.Border"/>
+    <fullyQualifiedTypeName name="javax.swing.BorderFactory"/>
+    <fullyQualifiedTypeName name="java.util.Timer"/>
+    <fullyQualifiedTypeName name="com.hakim.ChronoWalkCycle"/>
+    <fullyQualifiedTypeName name="com.hakim.Chrono"/>
+    <fullyQualifiedTypeName name="com.hakim.personnages.Personnages"/>
+    <fullyQualifiedTypeName name="com.hakim.TimeListener"/>
+    <fullyQualifiedTypeName name="javax.swing.Timer"/>
 </qualifiedTypeNameHistroy>

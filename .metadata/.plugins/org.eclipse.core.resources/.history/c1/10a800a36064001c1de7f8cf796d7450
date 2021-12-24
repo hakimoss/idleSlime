@@ -1,0 +1,52 @@
+package com.hakim;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Main {
+	
+	public static Scene scene;
+	public static MenuScene menuScene;
+	public static JButton btnDmg;
+
+	public static void main(String[] args) {
+
+		btnDmg.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				if(Scene.hero.getDmg()*10 >= Scene.hero.getGold()) {
+					Scene.hero.setDmg(Scene.hero.getDmg() + 1);
+					Scene.hero.setGold(Scene.hero.getDmg()*10);
+				}
+				
+			}
+			
+		});
+		
+		
+		JFrame frame=new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(800, 600);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+		frame.setAlwaysOnTop(true);
+		
+		scene=new Scene();
+		menuScene=new MenuScene();
+		scene.add(btnDmg);
+		
+		btnDmg = new JButton(""+Scene.hero.getDmg()*10);
+		
+		frame.setContentPane(scene);
+		//frame.add(menuScene, BorderLayout.SOUTH);
+		frame.setVisible(true);
+
+		
+		
+	}
+	
+
+}

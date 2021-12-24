@@ -1,0 +1,7 @@
+package com.hakim;
+
+import javax.swing.Timer;
+
+public class ChronoWalkCycle {
+	private Timer timer;
+}

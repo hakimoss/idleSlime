@@ -3,6 +3,7 @@ package com.hakim;
 public class Chrono implements Runnable {
 
 	private final int PAUSE = 3;
+	public int compteurWalk = 0;
 
 	@Override
 	public void run() {
@@ -12,6 +13,7 @@ public class Chrono implements Runnable {
 			
 			try {
 				Thread.sleep(PAUSE);
+				this.compteurWalk++;
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -19,6 +21,9 @@ public class Chrono implements Runnable {
 		}
 		
 	}
+
+
+	
 	
 	
 }
