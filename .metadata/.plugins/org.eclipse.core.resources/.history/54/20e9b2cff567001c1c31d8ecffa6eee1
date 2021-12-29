@@ -1,0 +1,15 @@
+package com.hakim;
+
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
+
+public class LoadaingScreen {
+
+	JLabel label;
+	JProgressBar ps;
+	
+	LoadaingScreen() {
+		label = new JLabel("bonjours");
+		ps = new JProgressBar();
+	}
+}

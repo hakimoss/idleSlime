@@ -5,7 +5,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.hakim.Main;
 import com.hakim.TimeListener;
@@ -15,9 +14,13 @@ public class Personnages {
 	private int largeur, hauteur;
 	private int x, y;
 	protected boolean marche;
+	
 	public int compteurMarche;
 	public int compteurCombat;
+	public int compteurMort;
+	
 	protected boolean vivant;
+	protected boolean disparait;
 	protected boolean versDroite;
 	
 	protected int health;
@@ -35,8 +38,10 @@ public class Personnages {
 		this.marche = true;
 		this.compteurMarche = 0;
 		this.compteurCombat = 0;
+		this.compteurMort = 0;
 		this.vivant = true;
 		this.versDroite = true;
+		this.disparait = false;
 		
 		
 		
@@ -68,6 +73,13 @@ public class Personnages {
 	public int getDmg() {return dmg;}
 	
 	public int getGoldValue() {return goldValue;}
+
+
+
+	public boolean isDisparait() {
+		return disparait;
+	}
+
 
 
 
@@ -161,7 +173,6 @@ public class Personnages {
 		Timer timer = new Timer(1000, listener);
 		timer.start();
 		this.compteurCombat++;
-		System.out.println(this.compteurCombat);
 		/*
 		try {
 			Thread.sleep(frequence);
@@ -180,6 +191,31 @@ public class Personnages {
 			str = "/images/"+nom+"4Attaque.png";
 		} else {
 			str = "/images/"+nom+"5Attaque.png";
+		}
+		
+		ico = new ImageIcon(getClass().getResource(str));
+		img = ico.getImage();
+		return img;
+		
+	}
+	
+	public Image mortImg(String nom, int frequence) {
+		String str;
+		Image img;
+		ImageIcon ico;
+		ActionListener listener = new TimeListener();
+		Timer timer = new Timer(1000, listener);
+		timer.start();
+		this.compteurMort++;
+
+	
+		
+		if(this.compteurMort == 1) {
+			str = "/images/"+nom+"1Mort.png";
+		} else if(this.compteurMort == 2) {
+			str = "/images/"+nom+"2Mort.png";
+		} else {
+			str = "/images/"+nom+"3Mort.png";
 		}
 		
 		ico = new ImageIcon(getClass().getResource(str));

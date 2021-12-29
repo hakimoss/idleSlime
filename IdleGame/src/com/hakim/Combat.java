@@ -39,8 +39,8 @@ public class Combat implements Runnable {
 			try {
 				
 				
-				System.out.println("enemie life : "+this.personnage.getHealth());
-				System.out.println("hero life : "+this.hero.getHealth());
+				//System.out.println("enemie life : "+this.personnage.getHealth());
+				//System.out.println("hero life : "+this.hero.getHealth());
 				Thread.sleep(1000);
 				this.hero.setHealth(this.hero.getHealth() - this.personnage.getDmg());
 				this.personnage.setHealth(this.personnage.getHealth() - this.hero.getDmg());

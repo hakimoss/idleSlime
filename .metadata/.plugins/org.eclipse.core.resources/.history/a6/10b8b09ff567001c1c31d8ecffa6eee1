@@ -1,0 +1,6 @@
+package com.hakim;
+
+public class LoadaingScreen {
+
+	JProgressBar ps = new JProgressBar();
+}
