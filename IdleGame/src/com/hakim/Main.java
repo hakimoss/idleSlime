@@ -8,18 +8,12 @@ import javax.swing.SwingUtilities;
 public class Main {
 	
 	public static Scene scene;
+	public static HeroFarm heroFarm;
 	
 	private static JFrame frame;
-	
-	//private static LoadingScreen ld;
-	
-	public static boolean loading = false;
-	
 
 	public static void main(String[] args) {
-
-		
-		
+	
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 600);
@@ -54,10 +48,11 @@ public class Main {
 	                        	changeScreentoScene();
 	                        	
 	                        	if(Main.scene.hero.isVivant() == false) {
-	                        		Main.scene.hero.setHealth(10 + ((Main.scene.hero.getHealthLvl()-1)*20));
+	                        		Main.scene.hero.setHealth(100 + ((Main.scene.hero.getHealthLvl()-1)*20));
 	                        		Main.scene.hero.setVivant(true);
 	                        		Main.scene.hero.setEnCombat(false);
 	                        		Main.scene.hero.setLibre(true);
+	                        		Main.scene.hero.setMarche(true);
 	                        		
 	                        		Main.scene.setStage(Main.scene.getStage() - 1);
 	                        		Main.scene.setMonster();
@@ -66,13 +61,16 @@ public class Main {
 	                        		
 	                        		Main.scene.upgrade.btnDmg.setBounds(30, 500, 100, 20);
 	                        		Main.scene.upgrade.btnHealth.setBounds(150, 500, 100, 20);
+	                        		Main.scene.upgrade.btnHeroFarm.setBounds(270, 500, 100, 20);
 	                        		
 	                        		Main.scene.add(Main.scene.upgrade.btnHealth);
 	                        		Main.scene.add(Main.scene.upgrade.btnDmg);
-	                        		
+	                        		Main.scene.add(Main.scene.upgrade.btnHeroFarm);
+                      		
 	                        		if(Main.scene.getStage() == 0) {
 	                        			Main.scene.setStage(1);
 	                        		}
+	                        		Main.scene.setxPos(-1);
 	                        	}
 	                        }
 	                    }
@@ -97,14 +95,29 @@ public class Main {
 	}
 	
 	public static void changeScreentoScene() {
-		//frame.getContentPane().removeAll();
+		
 		frame.getContentPane().removeAll();
 		frame.getContentPane().invalidate();
 		
-		frame.setContentPane(scene);
+		frame.setContentPane(Main.scene);
+		Main.scene.add(Main.scene.upgrade.btnHealth);
+		Main.scene.add(Main.scene.upgrade.btnDmg);
+		Main.scene.add(Main.scene.upgrade.btnHeroFarm);
+
 		frame.revalidate();
 		frame.repaint();
 
+	}
+	
+	public static void changeToFarm() {
+		heroFarm=new HeroFarm();
+		
+		frame.getContentPane().removeAll();
+		frame.getContentPane().invalidate();
+		
+		frame.setContentPane(heroFarm);
+		frame.revalidate();
+		frame.repaint();
 	}
 	
 	

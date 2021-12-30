@@ -23,7 +23,7 @@ public class Scene extends JPanel {
 	private Image imgFond1;
 	private Image imgFond2;
 	
-	private Image imgFondMenu;
+	Image imgFondMenu;
 	private ImageIcon icoFondMenu;
 
 	public Hero hero;
@@ -38,10 +38,9 @@ public class Scene extends JPanel {
 	private int dx;
 	private int xPos;
 	private int yDmgString;
-	private int ySol;
 	
 	
-	/// MenuScne
+	/// MenuScnene
 	
 	public JButton btnDmg;
 	public JButton btnHealth;
@@ -51,12 +50,11 @@ public class Scene extends JPanel {
 	
 	public Scene() {
 		super();
-		this.stage = 2;
+		this.stage = 1;
 		this.xFond1 = 0;
 		this.xFond2 = 800;
 		this.dx = 0;
 		this.xPos = -1;
-		this.ySol = 326;/// pas déterminer
 		this.yDmgString = 0;
 		
 		icoFond1 = new ImageIcon(getClass().getResource("/images/stageForest.png"));
@@ -68,70 +66,7 @@ public class Scene extends JPanel {
 
 		hero=new Hero(50, 183);
 		
-		enemi=new Enemi(150, 175);
-		enemi.setHealth(enemi.getHealth() * this.stage);
-		enemi.setGoldValue(enemi.getGoldValue() + this.stage);
-		enemi.setDmg(enemi.getDmg() * this.stage);
-		
-		enemi2=new Enemi(200, 175);
-		enemi2.setHealth(enemi2.getHealth() * this.stage);
-		enemi2.setGoldValue(enemi2.getGoldValue() + this.stage);
-		enemi2.setDmg(enemi2.getDmg() * this.stage);
-		
-		enemi3=new Enemi(300, 175);
-		enemi3.setHealth(enemi3.getHealth() * this.stage);
-		enemi3.setGoldValue(enemi3.getGoldValue() + this.stage);
-		enemi3.setDmg(enemi3.getDmg() * this.stage);
-		
-		enemi4=new Enemi(400, 175);
-		enemi4.setHealth(enemi4.getHealth() * this.stage);
-		enemi4.setGoldValue(enemi4.getGoldValue() + this.stage);
-		enemi4.setDmg(enemi4.getDmg() * this.stage);
-		
-		enemi5=new Enemi(500, 175);
-		enemi5.setHealth(enemi5.getHealth() * this.stage);
-		enemi5.setGoldValue(enemi5.getGoldValue() + this.stage);
-		enemi5.setDmg(enemi5.getDmg() * this.stage);
-		
-		enemi6=new Enemi(550, 175);
-		enemi6.setHealth(enemi6.getHealth() * this.stage);
-		enemi6.setGoldValue(enemi6.getGoldValue() + this.stage);
-		enemi6.setDmg(enemi6.getDmg() * this.stage);
-		
-		enemi7=new Enemi(590, 175);
-		enemi7.setGoldValue(enemi7.getGoldValue() + this.stage);
-		enemi7.setHealth(enemi.getHealth() * this.stage);
-		enemi7.setDmg(enemi7.getDmg() * this.stage);
-		
-		enemi8=new Enemi(620, 175);
-		enemi8.setHealth(enemi8.getHealth() * this.stage);
-		enemi8.setGoldValue(enemi8.getGoldValue() + this.stage);
-		enemi8.setDmg(enemi8.getDmg() * this.stage);
-		
-		enemi9=new Enemi(690, 175);
-		enemi9.setHealth(enemi9.getHealth() * this.stage);
-		enemi9.setGoldValue(enemi9.getGoldValue() + this.stage);
-		enemi9.setDmg(enemi9.getDmg() * this.stage);
-		
-		enemi10=new Enemi(720, 175);
-		enemi10.setHealth(enemi10.getHealth() * this.stage);
-		enemi10.setGoldValue(enemi10.getGoldValue() + this.stage);
-		enemi10.setDmg(enemi10.getDmg() * this.stage);
-		
-		tabEnemi=new ArrayList<Enemi>();
-		
-	
-		tabEnemi.add(enemi);
-		tabEnemi.add(enemi2);
-		tabEnemi.add(enemi3);
-		tabEnemi.add(enemi4);
-		tabEnemi.add(enemi5);
-		tabEnemi.add(enemi6);
-		tabEnemi.add(enemi7);
-		tabEnemi.add(enemi8);
-		tabEnemi.add(enemi9);
-		tabEnemi.add(enemi10);
-
+		setMonster();
 		this.setLayout(null);
 	
 		upgrade = new Upgrade(hero);
@@ -141,6 +76,9 @@ public class Scene extends JPanel {
 		
 		upgrade.btnHealth.setBounds(150, 500, 100, 20);
 		this.add(upgrade.btnHealth);
+		
+		upgrade.btnHeroFarm.setBounds(270, 500, 100, 20);
+		this.add(upgrade.btnHeroFarm);
 		
 		this.setFocusable(true);
 		this.requestFocusInWindow();
@@ -157,8 +95,6 @@ public class Scene extends JPanel {
 	public int getDx() {return dx;}
 
 	public int getxPos() {return xPos;}
-
-	public int getySol() {return ySol;}
 	
 	public int getyDmgString() {return yDmgString;}
 	
@@ -172,8 +108,6 @@ public class Scene extends JPanel {
 	public void setDx(int dx) {this.dx = dx;}
 
 	public void setxPos(int xPos) {this.xPos = xPos;}
-
-	public void setySol(int ySol) {this.ySol = ySol;}
 	
 	public void setyDmgString(int yDmgString) {this.yDmgString = yDmgString;}
 	
@@ -203,46 +137,55 @@ public class Scene extends JPanel {
 		enemi2.setHealth(enemi2.getHealth() * this.stage);
 		enemi2.setGoldValue(enemi2.getGoldValue() + this.stage);
 		enemi2.setDmg(enemi2.getDmg() * this.stage);
+		enemi2.compteurMarche = 2;
 		
 		enemi3=new Enemi(300, 175);
 		enemi3.setHealth(enemi3.getHealth() * this.stage);
 		enemi3.setGoldValue(enemi3.getGoldValue() + this.stage);
 		enemi3.setDmg(enemi3.getDmg() * this.stage);
+		enemi3.compteurMarche = 1;
 		
 		enemi4=new Enemi(400, 175);
 		enemi4.setHealth(enemi4.getHealth() * this.stage);
 		enemi4.setGoldValue(enemi4.getGoldValue() + this.stage);
 		enemi4.setDmg(enemi4.getDmg() * this.stage);
+		enemi4.compteurMarche = 3;
 		
 		enemi5=new Enemi(500, 175);
 		enemi5.setHealth(enemi5.getHealth() * this.stage);
 		enemi5.setGoldValue(enemi5.getGoldValue() + this.stage);
 		enemi5.setDmg(enemi5.getDmg() * this.stage);
+		enemi5.compteurMarche = 1;
 		
 		enemi6=new Enemi(550, 175);
 		enemi6.setHealth(enemi6.getHealth() * this.stage);
 		enemi6.setGoldValue(enemi6.getGoldValue() + this.stage);
 		enemi6.setDmg(enemi6.getDmg() * this.stage);
+		enemi6.compteurMarche = 0;
 		
 		enemi7=new Enemi(590, 175);
 		enemi7.setHealth(enemi7.getHealth() * this.stage);
 		enemi7.setGoldValue(enemi7.getGoldValue() + this.stage);
 		enemi7.setDmg(enemi7.getDmg() * this.stage);
+		enemi7.compteurMarche = 2;
 		
 		enemi8=new Enemi(620, 175);
 		enemi8.setHealth(enemi8.getHealth() * this.stage);
 		enemi8.setGoldValue(enemi8.getGoldValue() + this.stage);
-		enemi8.setDmg(enemi8.getDmg() * this.stage);	
+		enemi8.setDmg(enemi8.getDmg() * this.stage);
+		enemi8.compteurMarche = 0;
 		
 		enemi9=new Enemi(690, 175);
 		enemi9.setHealth(enemi9.getHealth() * this.stage);
 		enemi9.setGoldValue(enemi9.getGoldValue() + this.stage);
 		enemi9.setDmg(enemi9.getDmg() * this.stage);
+		enemi9.compteurMarche = 3;
 		
 		enemi10=new Enemi(720, 175);
 		enemi10.setHealth(enemi10.getHealth() * this.stage);
 		enemi10.setGoldValue(enemi10.getGoldValue() + this.stage);
 		enemi10.setDmg(enemi10.getDmg() * this.stage);
+		enemi10.compteurMarche = 1;
 		
 		tabEnemi=new ArrayList<Enemi>();
 		
@@ -313,6 +256,7 @@ public class Scene extends JPanel {
 			this.hero.setMarche(false);
 			this.setDx(0);
 		}
+		
 
 		//image des fond 1 et 2
 		g2.drawImage(this.imgFond1, this.xFond1, 0, null);

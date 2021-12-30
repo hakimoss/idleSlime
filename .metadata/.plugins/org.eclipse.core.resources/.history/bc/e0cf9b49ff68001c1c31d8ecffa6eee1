@@ -1,0 +1,40 @@
+package com.hakim;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class heroFarm extends JPanel {
+	
+	
+	
+	public heroFarm() {
+		
+	}
+	
+	
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics g2=(Graphics2D) g;
+		
+		
+		
+		///    MENU SCENE    ///
+		
+		g2.drawImage(Main.scene.imgFondMenu, 0, 300, null);
+		
+		g2.drawString("Health : " + Main.scene.hero.getHealth() , 30, 330);
+		
+		g2.drawString("Damage : " + Main.scene.hero.getDmg(), 130, 330);
+		
+		g2.drawString("Gold : " + Main.scene.hero.getGold(), 230, 330);
+		
+		g2.drawString(Main.scene.hero.getDmg()*10+" Gold", 60, 490);
+		
+		g2.drawString(Main.scene.hero.getHealthLvl()*20+" Gold", 175, 490);
+	}
+	
+}

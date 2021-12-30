@@ -29,21 +29,14 @@ public class Hero extends Personnages {
 		this.libre = true;
 		
 		this.healthLvl = 1;
-		this.health = 2;
+		this.health = 100;
 		this.dmg = 2;
 		this.enCombat = false;
-		this.gold = 100;
+		this.gold = 0;
 		this.dmgPrice = this.dmg*10;
 		
 	}
 	
-	
-
-
-
-
-
-
 
 	//   GETTERS   //
 	public Image getImgHero() {return imgHero;}
