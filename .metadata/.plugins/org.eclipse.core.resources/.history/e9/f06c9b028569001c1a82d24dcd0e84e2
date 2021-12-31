@@ -1,0 +1,32 @@
+package com.hakim;
+
+import javax.swing.JFrame;
+
+import com.hakim.logIn.CreateAccountPanel;
+import com.hakim.logIn.LoginPanel;
+
+@SuppressWarnings("serial")
+public class LogInScreen extends JFrame {
+	LoginPanel loginPanel;
+	CreateAccountPanel createAccountPanel;
+
+	
+	public LogInScreen() {
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(300, 400);
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
+		this.setAlwaysOnTop(true);
+		
+		loginPanel=new LoginPanel();
+		createAccountPanel = new CreateAccountPanel();
+		this.add(loginPanel);
+		
+
+		
+
+		this.setVisible(true);	
+	}
+	
+	
+}

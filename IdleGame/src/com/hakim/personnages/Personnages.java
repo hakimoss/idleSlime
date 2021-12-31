@@ -7,7 +7,7 @@ import javax.swing.Timer;
 
 import java.awt.event.ActionListener;
 import com.hakim.Main;
-import com.hakim.TimeListener;
+import com.hakim.gameplay.TimeListener;
 
 public class Personnages {
 	

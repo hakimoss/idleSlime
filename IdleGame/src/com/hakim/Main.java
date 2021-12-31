@@ -1,19 +1,29 @@
 package com.hakim;
 
 import java.awt.Font;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+
+import com.hakim.gameplay.Upgrade;
+import com.hakim.logIn.LogIn;
+import com.hakim.logIn.LoginPanel;
 
 public class Main {
 	
 	public static Scene scene;
 	public static HeroFarm heroFarm;
-	
-	private static JFrame frame;
+	public static LogInScreen logInScreen;
+	public static JFrame frame;
 
 	public static void main(String[] args) {
-	
+		LoginPanel lp=new LoginPanel();
+		logInScreen = new LogInScreen();
+		scene=new Scene();
+		
+			
+			
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 600);
@@ -22,11 +32,43 @@ public class Main {
 		frame.setAlwaysOnTop(true);
 		
 		
-		scene=new Scene();
-		frame.setContentPane(scene);
 		
-
-		frame.setVisible(true);	
+		
+		
+		
+		
+		
+		
+		frame.setContentPane(scene);
+	
+		
+			
+			
+		
+		
+		
+		/*
+		Profil p = new Profil("hakimos123@live.ca", "123soleil456", "hakimos321");
+		LogIn l=new LogIn();
+		System.out.println(l.CheckEmailExists("hakimos321321@live.ca"));
+		*/
+		
+		/*
+		LogIn l=new LogIn();
+		Profil p = new Profil("hakimos123@live.ca", "123soleil456", "hakimos321");
+		
+		try {
+			
+			System.out.println(l.getAccount(p));
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
+		
 	}
 	
 	public static void changeScreentoLoading() {

@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
-    <fullyQualifiedTypeName name="java.lang.Thread"/>
     <fullyQualifiedTypeName name="com.hakim.personnages.Enemi"/>
     <fullyQualifiedTypeName name="com.hakim.Combat"/>
-    <fullyQualifiedTypeName name="com.hakim.Main"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
     <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
-    <fullyQualifiedTypeName name="javax.swing.JButton"/>
-    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="com.hakim.Scene"/>
     <fullyQualifiedTypeName name="com.hakim.personnages.Hero"/>
     <fullyQualifiedTypeName name="java.net.URL"/>
@@ -22,4 +16,22 @@
     <fullyQualifiedTypeName name="com.hakim.personnages.Personnages"/>
     <fullyQualifiedTypeName name="com.hakim.TimeListener"/>
     <fullyQualifiedTypeName name="javax.swing.Timer"/>
+    <fullyQualifiedTypeName name="java.text.AttributedString"/>
+    <fullyQualifiedTypeName name="javax.swing.JProgressBar"/>
+    <fullyQualifiedTypeName name="java.lang.Thread"/>
+    <fullyQualifiedTypeName name="javax.swing.SwingUtilities"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="javax.swing.JButton"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextField"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="com.hakim.logIn.CreateAccountPanel"/>
+    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="com.hakim.LogInScreen"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="com.hakim.logIn.LogIn"/>
+    <fullyQualifiedTypeName name="com.hakim.Profil"/>
+    <fullyQualifiedTypeName name="com.hakim.logIn.LoginPanel"/>
+    <fullyQualifiedTypeName name="com.hakim.Main"/>
 </qualifiedTypeNameHistroy>

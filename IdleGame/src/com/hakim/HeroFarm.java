@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import com.hakim.gameplay.Upgrade;
+
 @SuppressWarnings("serial")
 public class HeroFarm extends JPanel {
 	public Upgrade upgrade;

@@ -9,6 +9,11 @@
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
 			<item value="system"/>
+			<item value="loading"/>
+			<item value="gold"/>
+			<item value="stage"/>
+			<item value="400"/>
+			<item value="400à"/>
 			<item value="combat"/>
 			<item value="comab"/>
 			<item value="comba"/>

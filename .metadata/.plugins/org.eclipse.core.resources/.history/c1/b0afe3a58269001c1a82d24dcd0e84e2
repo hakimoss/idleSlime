@@ -1,0 +1,22 @@
+package com.hakim;
+
+import javax.swing.JFrame;
+
+@SuppressWarnings("serial")
+public class LogInScreen extends JFrame {
+
+	frame=new JFrame();
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.setSize(300, 400);
+	frame.setLocationRelativeTo(null);
+	frame.setResizable(false);
+	frame.setAlwaysOnTop(true);
+	
+	
+	scene=new Scene();
+	frame.setContentPane(scene);
+	
+
+	frame.setVisible(true);	
+	
+}

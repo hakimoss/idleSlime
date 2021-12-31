@@ -1,0 +1,28 @@
+package com.hakim;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class LogInScreen extends JFrame {
+	JTextField inputEmail;
+	JTextField inputPassword;
+	JButton btnConnection;
+
+	
+	public LogInScreen() {
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(300, 400);
+		this.setLocationRelativeTo(null);
+		this.setResizable(false);
+		this.setAlwaysOnTop(true);
+		
+
+		
+
+		this.setVisible(true);	
+	}
+	
+	
+}

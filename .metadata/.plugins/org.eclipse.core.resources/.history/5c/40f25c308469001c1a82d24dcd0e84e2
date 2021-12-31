@@ -1,0 +1,29 @@
+package com.hakim.logIn;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class LoginPanel extends JPanel {
+	JLabel labelEmail;
+	JTextField inputEmail;
+	JLabel labelPassword;
+	JTextField inputPassword;
+	JButton btnConnection;
+	
+	public LoginPanel() {
+		labelEmail = new JLabel("Email");
+		inputEmail = new JTextField(12);
+		
+		labelPassword = new JLabel("Password");
+		inputPassword = new JTextField(12);
+		
+		btnConnection = new JButton("Connection");
+		
+		this.add(inputEmail);
+		this.add(inputPassword);
+		this.add(btnConnection);
+	}
+}

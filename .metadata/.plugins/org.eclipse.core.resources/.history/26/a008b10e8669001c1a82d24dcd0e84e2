@@ -1,0 +1,70 @@
+package com.hakim;
+
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+
+import com.hakim.logIn.CreateAccountPanel;
+import com.hakim.logIn.LoginPanel;
+
+@SuppressWarnings("serial")
+public class LogInScreen{
+	LoginPanel loginPanel;
+	static CreateAccountPanel createAccountPanel;
+	private static JFrame frameLogin;
+	
+	public LogInScreen() {
+		frameLogin = new JFrame();
+		
+		frameLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameLogin.setSize(300, 400);
+		frameLogin.setLocationRelativeTo(null);
+		frameLogin.setResizable(false);
+		frameLogin.setAlwaysOnTop(true);
+		
+		loginPanel=new LoginPanel();
+		
+		
+		frameLogin.setContentPane(loginPanel);
+		
+
+		
+
+		frameLogin.setVisible(true);	
+		
+		loginPanel.btnCreateAccount.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				createAccountPanel=new CreateAccountPanel();
+				
+				frameLogin.getContentPane().removeAll();
+				frameLogin.getContentPane().invalidate();
+				
+				frameLogin.setContentPane(createAccountPanel);
+				frameLogin.revalidate();
+				frameLogin.repaint();
+				
+			}
+			
+		});
+		
+		
+		
+		
+	}
+	
+	public static void changeToFarm() {
+		createAccountPanel=new CreateAccountPanel();
+		
+		frameLogin.getContentPane().removeAll();
+		frameLogin.getContentPane().invalidate();
+		
+		frameLogin.setContentPane(createAccountPanel);
+		frameLogin.revalidate();
+		frameLogin.repaint();
+	}
+}
+

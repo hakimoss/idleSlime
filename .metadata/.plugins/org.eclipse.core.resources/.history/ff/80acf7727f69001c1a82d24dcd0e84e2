@@ -1,0 +1,5 @@
+package com.hakim;
+
+public class Profil implements Serializable {
+
+}
