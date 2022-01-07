@@ -1,0 +1,115 @@
+package com.hakim;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+import com.hakim.logIn.LoginPanel;
+import com.hakim.personnages.Personnages;
+
+@SuppressWarnings("serial")
+public class SelecteHeroScreen extends JPanel {
+
+	private JButton slimHerbe;
+	private JButton slimFeu;
+	private JButton slimEau;
+	
+	private Personnages p;
+	
+	public SelecteHeroScreen() {
+		slimHerbe = new JButton("Herbe");
+		slimHerbe.setBounds(30, 200, 100, 20);
+		this.add(slimHerbe);
+		
+		slimFeu=new JButton("Feu");
+		slimFeu.setBounds(150, 200, 100, 20);
+		this.add(slimFeu);
+		
+		slimEau=new JButton("Eau");
+		slimEau.setBounds(270, 200, 100, 20);
+		this.add(slimEau);
+		
+		slimHerbe.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println("email : "+ Main.scene.hero.getProfil().getEmail());
+				Main.scene.hero.getProfil().setSelectedHero("heroHerbe");
+				
+				Main.frame.getContentPane().removeAll();
+				Main.frame.getContentPane().invalidate();
+				Main.frame.setContentPane(Main.scene);
+				Main.frame.revalidate();
+				Main.frame.repaint();
+
+			}
+			
+		});
+		
+
+		slimFeu.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Main.scene.hero.getProfil().setSelectedHero("heroFeu");
+				Main.frame.getContentPane().removeAll();
+				Main.frame.getContentPane().invalidate();
+				Main.frame.setContentPane(Main.scene);
+				Main.frame.revalidate();
+				Main.frame.repaint();
+			}
+			
+		});
+		
+
+		slimEau.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Main.scene.hero.getProfil().setSelectedHero("heroEau");
+				Main.frame.getContentPane().removeAll();
+				Main.frame.getContentPane().invalidate();
+				Main.frame.setContentPane(Main.scene);
+				Main.frame.revalidate();
+				Main.frame.repaint();
+			}
+			
+		});
+
+	}
+	
+	
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics g2=(Graphics2D) g;
+		
+		g2.drawImage(p.marche("heroHerbe", 100), 50, 183, null);
+		
+		g2.drawImage(p.marche("heroFeu", 100), 50, 183, null);
+		
+		g2.drawImage(p.marche("heroEau", 100), 50, 183, null);
+		
+		
+		
+		
+		///    MENU SCENE    ///
+		
+		g2.drawImage(Main.scene.imgFondMenu, 0, 300, null);
+		
+		g2.drawString("Health : " + Main.scene.hero.getHealth() , 30, 330);
+		
+		g2.drawString("Damage : " + Main.scene.hero.getDmg(), 130, 330);
+		
+		g2.drawString("Gold : " + Main.scene.hero.getGold(), 230, 330);
+		
+		g2.drawString(Main.scene.hero.getDmg()*10+" Gold", 60, 490);
+		
+		g2.drawString(Main.scene.hero.getHealthLvl()*20+" Gold", 175, 490);
+	}
+}

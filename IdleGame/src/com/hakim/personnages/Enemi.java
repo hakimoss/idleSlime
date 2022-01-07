@@ -10,8 +10,6 @@ public class Enemi extends Personnages{
 
 	private Image imgEnemi;
 	private ImageIcon icoEnemi;
-	//private int dxEnemi;
-	//private final int PAUSE = 15;
 	private int health;
 	private int dmg;
 	private int goldValue;
@@ -20,7 +18,6 @@ public class Enemi extends Personnages{
 		super(x, y, 25, 32);
 		super.setVersDroite(false);
 		super.setMarche(true);
-		//this.dxEnemi = 1;
 		
 		icoEnemi = new ImageIcon(getClass().getResource("/images/oeil3Mort.png"));
 		imgEnemi = icoEnemi.getImage();
@@ -30,17 +27,6 @@ public class Enemi extends Personnages{
 		this.goldValue = 3;
 	
 	}
-	
-	
-
-
-
-
-
-
-
-
-
 
 	//   GETTERS   //
 	public Image getImgEnemi() {return imgEnemi;}
@@ -60,16 +46,7 @@ public class Enemi extends Personnages{
 	public void setGoldValue(int goldValue) {this.goldValue = goldValue;}
 	
 	//   METHODS   //
-	/*
-	public void bouge() {
-		if(super.isVersDroite() == true) {
-			this.dxEnemi = 1;
-		} else {
-			this.dxEnemi = -1;
-		}
-		super.setX(super.getX() + this.dxEnemi);
-	}
-	*/
+
 	
 
 	

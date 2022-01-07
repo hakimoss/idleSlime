@@ -1,0 +1,15 @@
+package com.hakim;
+
+import javax.swing.JButton;
+
+public class SelecteHeroScreen {
+
+	private JButton slimHerbe;
+	private JButton slimFeu;
+	private JButton slimEau;
+	
+	private void SelectedHero() {
+		// TODO Auto-generated method stub
+
+	}
+}

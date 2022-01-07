@@ -2,12 +2,15 @@ package com.hakim.gameplay;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import java.awt.Color;
 
 import com.hakim.Main;
+import com.hakim.Profil;
 import com.hakim.RoundedBorder;
+import com.hakim.logIn.LogIn;
 import com.hakim.personnages.Hero;
 
 
@@ -17,6 +20,7 @@ public class Upgrade {
 	public JButton btnHealth;
 	public JButton btnHeroFarm;	
 	public JButton btnScene;	
+	public JButton btnSave;
 
 	public Upgrade(Hero hero) {
 		btnDmg=new JButton("UP DMG");
@@ -38,6 +42,11 @@ public class Upgrade {
 		btnScene.setContentAreaFilled(false);
 		btnScene.setBorder(new RoundedBorder(10));
 		btnScene.setForeground(Color.BLUE);
+		
+		btnSave = new JButton("SAVE");
+		btnSave.setContentAreaFilled(false);
+		btnSave.setBorder(new RoundedBorder(10));
+		btnSave.setForeground(Color.RED);
 		
 		btnDmg.addActionListener(new ActionListener() {
 			
@@ -78,6 +87,37 @@ public class Upgrade {
 			}		
 		});
 		
+		btnSave.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Profil p = new Profil(Main.scene.hero.getEmail(), Main.scene.hero.getStageMax(), Main.scene.hero.getHealthLvl(), Main.scene.hero.getDmg(), Main.scene.hero.getGold());
+				LogIn logIn = new LogIn();
+				try {
+					logIn.saveAccount(p);
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				
+				new Thread(new Runnable()
+				{
+				    @Override
+				    public void run()
+				    {
+				    	Main.scene.gameSavedString = "Game Saved!";
+				        try {
+							Thread.sleep(2000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}      
+				        Main.scene.gameSavedString = "";
+				    }
+				}).start();
+			}
+			
+		});
 		
 	}
 	

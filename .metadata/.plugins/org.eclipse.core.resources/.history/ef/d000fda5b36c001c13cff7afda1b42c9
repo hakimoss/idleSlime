@@ -1,0 +1,51 @@
+package com.hakim.personnages;
+
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+public class Golem extends Personnages {
+
+	private Image imgGolem;
+	private ImageIcon icoGolem;
+
+	private int health;
+	private int dmg;
+	private int goldValue;
+	
+	public Golem(int x, int y) {
+		super(x, y, 71, 62);
+		super.setVersDroite(false);
+		super.setMarche(true);
+		//this.dxEnemi = 1;
+		
+		icoGolem = new ImageIcon(getClass().getResource("/images/golem.png"));
+		imgGolem = icoGolem.getImage();
+		
+		this.health = 100;
+		this.dmg = 5;
+		this.goldValue = 100;
+	
+	}
+	
+
+	//   GETTERS   //
+	public Image getImgGolem() {return imgGolem;}
+	
+	public int getHealth() {return health;}
+	
+	public int getDmg() {return dmg;}
+	
+	public int getGoldValue() {return goldValue;}
+
+	
+	//   SETTERS   //
+	public void setHealth(int health) {this.health = health;}
+	
+	public void setDmg(int dmg) {this.dmg = dmg;}
+	
+	public void setGoldValue(int goldValue) {this.goldValue = goldValue;}
+	
+	//   METHODS   //
+
+}

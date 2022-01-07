@@ -124,14 +124,7 @@ public class Personnages {
 			this.compteurMarche++;
 			
 			
-		/*	
-			try {
-				Thread.sleep(frequence);
-				this.compteurMarche++;
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		*/
+		
 			if(this.compteurMarche >=4) {
 				this.compteurMarche = 0;
 			}

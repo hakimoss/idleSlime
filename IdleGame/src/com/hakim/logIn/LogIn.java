@@ -18,10 +18,11 @@ public class LogIn {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/idleslim", "root", "");
-			PreparedStatement ps = conn.prepareStatement("insert into account(email,password,name,stage,dmg,health,gold) value(?,?,?,1,2,0,0)");
+			PreparedStatement ps = conn.prepareStatement("insert into account(email,password,name,stage,dmg,health,gold,selectedHero) value(?,?,?,1,2,0,0,?)");
 			ps.setString(1, p.getEmail());
 			ps.setString(2, p.getPassword());
 			ps.setString(3, p.getName());
+			ps.setString(4, null);
 			ps.executeUpdate();
 			ps.close();
 			conn.close();
@@ -70,12 +71,25 @@ public class LogIn {
 			  if(rs.next()) {
 	              System.out.println("Success");
 	              connectedbool = true;
-	              Main.scene.stage = rs.getInt("stage");
+	              
 	              Main.scene.hero.setHealth(rs.getInt("health")*20+100);
 	              Main.scene.hero.setHealthLvl(rs.getInt("health"));
 	              Main.scene.hero.setDmg(rs.getInt("dmg"));
 	              Main.scene.hero.setGold(rs.getInt("gold"));
-	              Main.scene.setMonster();
+	              Main.scene.hero.setEmail(rs.getString("email"));
+	              Main.scene.hero.setStageMax(rs.getInt("stage"));
+	              Main.scene.hero.setPlayerName(rs.getString("name"));
+	              Main.scene.hero.setLastUpdate(rs.getLong("lastUpdate"));
+	              Main.scene.hero.setSelectedHero(rs.getString("selectedHero"));
+	              
+	              Main.scene.stage = Main.scene.hero.getStageMax();
+	              if(Main.scene.hero.getStageMax() == 10) {
+	            	  Main.scene.setGolem();
+	            	  Main.scene.tabEnemi.clear();
+	              } else {
+	            	  Main.scene.setMonster();
+	              }
+	              
 	          }
 	          else {
 
@@ -95,5 +109,32 @@ public class LogIn {
         }
 		
 		return connectedbool;
+	}
+	
+	public void saveAccount(Profil p) throws ClassNotFoundException,
+    SQLException {
+		
+		Connection conn = null;
+        PreparedStatement ps = null;
+        long start = System.currentTimeMillis();
+		try {
+			//Class.forName("com.mysql.jdbc.Driver");
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/idleslim", "root", "");
+			ps = conn.prepareStatement("update account set stage = ?, health = ?, dmg = ?, gold = ?, lastUpdate = ?, selectedHero = ? where email = ?");
+			ps.setInt(1, p.getStage());
+			ps.setInt(2, p.getHealth());
+			ps.setInt(3, p.getDmg());
+			ps.setInt(4, p.getGold());
+			ps.setLong(5, start);
+			ps.setString(6, Main.scene.hero.getSelectedHero());
+			ps.setString(7, p.getEmail());
+			
+			ps.executeUpdate();
+			ps.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

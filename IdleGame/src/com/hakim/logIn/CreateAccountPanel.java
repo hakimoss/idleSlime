@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -14,6 +13,8 @@ import com.hakim.Profil;
 
 @SuppressWarnings("serial")
 public class CreateAccountPanel extends JPanel {
+	JLabel labelErrorMsg;
+	
 	JLabel labelEmail;
 	JTextField inputEmail;
 	
@@ -28,6 +29,8 @@ public class CreateAccountPanel extends JPanel {
 
 	
 	public CreateAccountPanel() {
+		labelErrorMsg = new JLabel("");
+		
 		labelEmail = new JLabel("Email");
 		inputEmail = new JTextField(10);
 		
@@ -41,6 +44,7 @@ public class CreateAccountPanel extends JPanel {
 		btnConnectionScreen = new JButton("Already have account ?");
 
 		
+		
 		this.add(labelEmail);
 		this.add(inputEmail);
 		
@@ -52,6 +56,8 @@ public class CreateAccountPanel extends JPanel {
 		
 		this.add(btnCreate);
 		this.add(btnConnectionScreen);
+		
+		this.add(labelErrorMsg);
 
 		btnConnectionScreen.addActionListener(new ActionListener() {
 
@@ -79,14 +85,39 @@ public class CreateAccountPanel extends JPanel {
 				
 				
 				
+				
+				
 				Profil p = new Profil(email, password, name);
 				LogIn l = new LogIn();
 				
 				if(l.CheckEmailExists(email) == true) {
-					JOptionPane.showMessageDialog(null, "L'email existe deja");
+					new Thread(new Runnable()
+					{
+					    @Override
+					    public void run()
+					    {
+							labelErrorMsg.setText("<html><p style='color:red;'>L'émail existe déja...</p></html>");
+					        try {
+								Thread.sleep(4000);
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}      
+							labelErrorMsg.setText("");
+					    }
+					}).start();
+					
+					
 				} else {
-					JOptionPane.showMessageDialog(null, "Le compte a été crée avec succes");
 					l.createAccount(p);
+					
+					LogInScreen.loginPanel=new LoginPanel();
+					
+					LogInScreen.frameLogin.getContentPane().removeAll();
+					LogInScreen.frameLogin.getContentPane().invalidate();
+					
+					LogInScreen.frameLogin.setContentPane(LogInScreen.loginPanel);
+					LogInScreen.frameLogin.revalidate();
+					LogInScreen.frameLogin.repaint();
 				}
 				
 				

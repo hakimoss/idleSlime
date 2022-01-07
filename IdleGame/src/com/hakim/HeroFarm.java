@@ -11,7 +11,7 @@ import com.hakim.gameplay.Upgrade;
 public class HeroFarm extends JPanel {
 	public Upgrade upgrade;
 	
-	
+
 	public HeroFarm() {
 		this.setLayout(null);
 		
@@ -25,16 +25,13 @@ public class HeroFarm extends JPanel {
 		
 		upgrade.btnScene.setBounds(270, 500, 100, 20);
 		this.add(upgrade.btnScene);
+			
 	}
-	
-	
-	
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics g2=(Graphics2D) g;
-		
-		
-		
+	
 		///    MENU SCENE    ///
 		
 		g2.drawImage(Main.scene.imgFondMenu, 0, 300, null);
@@ -51,3 +48,4 @@ public class HeroFarm extends JPanel {
 	}
 	
 }
+;

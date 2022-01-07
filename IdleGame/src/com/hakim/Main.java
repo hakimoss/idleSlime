@@ -1,14 +1,12 @@
 package com.hakim;
 
 import java.awt.Font;
-import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 import com.hakim.gameplay.Upgrade;
-import com.hakim.logIn.LogIn;
-import com.hakim.logIn.LoginPanel;
 
 public class Main {
 	
@@ -17,13 +15,13 @@ public class Main {
 	public static LogInScreen logInScreen;
 	public static JFrame frame;
 
+
 	public static void main(String[] args) {
-		LoginPanel lp=new LoginPanel();
+		
+		
 		logInScreen = new LogInScreen();
 		scene=new Scene();
-		
-			
-			
+	
 		frame=new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800, 600);
@@ -31,44 +29,8 @@ public class Main {
 		frame.setResizable(false);
 		frame.setAlwaysOnTop(true);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		frame.setContentPane(scene);
+		//frame.setContentPane(scene);
 	
-		
-			
-			
-		
-		
-		
-		/*
-		Profil p = new Profil("hakimos123@live.ca", "123soleil456", "hakimos321");
-		LogIn l=new LogIn();
-		System.out.println(l.CheckEmailExists("hakimos321321@live.ca"));
-		*/
-		
-		/*
-		LogIn l=new LogIn();
-		Profil p = new Profil("hakimos123@live.ca", "123soleil456", "hakimos321");
-		
-		try {
-			
-			System.out.println(l.getAccount(p));
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
-		
 	}
 	
 	public static void changeScreentoLoading() {
@@ -97,21 +59,43 @@ public class Main {
 	                        		Main.scene.hero.setMarche(true);
 	                        		
 	                        		Main.scene.setStage(Main.scene.getStage() - 1);
-	                        		Main.scene.setMonster();
+	                        		Main.scene.hero.setStageMax(Main.scene.hero.getStageMax() - 1);
+	                        		
+	                        		if(Main.scene.stage != 10) {
+		                        		Main.scene.setMonster();
+	                        		} else {
+		                        		Main.scene.setGolem();
+	                        		}
 	                        		
 	                        		Main.scene.upgrade = new Upgrade(Main.scene.hero);
 	                        		
 	                        		Main.scene.upgrade.btnDmg.setBounds(30, 500, 100, 20);
 	                        		Main.scene.upgrade.btnHealth.setBounds(150, 500, 100, 20);
 	                        		Main.scene.upgrade.btnHeroFarm.setBounds(270, 500, 100, 20);
+	                        		Main.scene.upgrade.btnSave.setBounds(500, 500, 100, 20);
 	                        		
 	                        		Main.scene.add(Main.scene.upgrade.btnHealth);
 	                        		Main.scene.add(Main.scene.upgrade.btnDmg);
 	                        		Main.scene.add(Main.scene.upgrade.btnHeroFarm);
+	                        		Main.scene.add(Main.scene.upgrade.btnSave);
+	                     
                       		
 	                        		if(Main.scene.getStage() == 0) {
 	                        			Main.scene.setStage(1);
+	                        		} 
+	                        		if(Main.scene.hero.getStageMax() == 0) {
+	                        			Main.scene.hero.setStageMax(1);
 	                        		}
+	                        		if(Main.scene.stage <= 10) {
+	                        			Main.scene.setIcoFond1(new ImageIcon(getClass().getResource("/images/stageForest.png")));
+	        							Main.scene.setImgFond1(Main.scene.getIcoFond1().getImage());
+	        							Main.scene.setImgFond2(Main.scene.getIcoFond1().getImage());	
+	                        		} else if(Main.scene.stage > 10) {
+	                        			Main.scene.setIcoFond1(new ImageIcon(getClass().getResource("/images/stageLava.png")));
+	        							Main.scene.setImgFond1(Main.scene.getIcoFond1().getImage());
+	        							Main.scene.setImgFond2(Main.scene.getIcoFond1().getImage());	
+	                        		} 
+	                        		                   		
 	                        		Main.scene.setxPos(-1);
 	                        	}
 	                        }
@@ -145,6 +129,7 @@ public class Main {
 		Main.scene.add(Main.scene.upgrade.btnHealth);
 		Main.scene.add(Main.scene.upgrade.btnDmg);
 		Main.scene.add(Main.scene.upgrade.btnHeroFarm);
+		Main.scene.add(Main.scene.upgrade.btnSave);
 
 		frame.revalidate();
 		frame.repaint();

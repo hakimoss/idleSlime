@@ -12,9 +12,7 @@ public class Combat implements Runnable {
 		this.personnage = enemi;
 		this.hero = hero;
 		this.hero.compteurCombat = 0;
-		
-		
-		
+
 		Thread chronoCombat= new Thread(this);
 		
 		if(this.hero.isVivant() == true && this.personnage.isVivant() == true) {
@@ -31,22 +29,14 @@ public class Combat implements Runnable {
 	//   METHODS   //
 	@Override
 	public void run() {
-		
-		
-		
+
 		while(this.hero.isEnCombat() == true) {
 		
 			try {
-				
-				
-				//System.out.println("enemie life : "+this.personnage.getHealth());
-				//System.out.println("hero life : "+this.hero.getHealth());
 				Thread.sleep(1000);
 				this.hero.setHealth(this.hero.getHealth() - this.personnage.getDmg());
 				this.personnage.setHealth(this.personnage.getHealth() - this.hero.getDmg());
-				
-				
-				
+
 				if(this.hero.getHealth() <= 0) {
 					this.hero.setVivant(false);
 				} else if (this.personnage.getHealth() <= 0) {

@@ -13,9 +13,7 @@ public class LogInScreen{
 	public static JFrame frameLogin;
 	
 	public LogInScreen() {
-		frameLogin = new JFrame();
-		LoginPanel lp=new LoginPanel();
-		
+		frameLogin = new JFrame();		
 		frameLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameLogin.setSize(300, 400);
 		frameLogin.setLocationRelativeTo(null);
@@ -26,16 +24,7 @@ public class LogInScreen{
 		
 		
 		frameLogin.setContentPane(loginPanel);
-		
-
-		
-
-		frameLogin.setVisible(true);	
-
-		
-		
-		
-		
+		frameLogin.setVisible(true);		
 	}
 	
 
