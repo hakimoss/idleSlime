@@ -18,7 +18,7 @@ public class LogIn {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/idleslim", "root", "");
-			PreparedStatement ps = conn.prepareStatement("insert into account(email,password,name,stage,dmg,health,gold,selectedHero) value(?,?,?,1,2,0,0,?)");
+			PreparedStatement ps = conn.prepareStatement("insert into account(email,password,name,stage,dmg,health,gold,selectedHero,slimHerbe,slimFeu,slimEau) value(?,?,?,1,2,0,0,?,0,0,0)");
 			ps.setString(1, p.getEmail());
 			ps.setString(2, p.getPassword());
 			ps.setString(3, p.getName());
@@ -81,6 +81,9 @@ public class LogIn {
 	              Main.scene.hero.setPlayerName(rs.getString("name"));
 	              Main.scene.hero.setLastUpdate(rs.getLong("lastUpdate"));
 	              Main.scene.hero.setSelectedHero(rs.getString("selectedHero"));
+	              Main.scene.hero.setSlimHerbe(rs.getBoolean("slimHerbe"));
+	              Main.scene.hero.setSlimFeu(rs.getBoolean("slimFeu"));
+	              Main.scene.hero.setSlimEau(rs.getBoolean("slimEau"));
 	              
 	              Main.scene.stage = Main.scene.hero.getStageMax();
 	              if(Main.scene.hero.getStageMax() == 10) {

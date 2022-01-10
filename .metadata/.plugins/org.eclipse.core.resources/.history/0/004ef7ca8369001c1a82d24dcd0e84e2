@@ -1,8 +1,0 @@
-package com.hakim.logIn;
-
-import javax.swing.JPanel;
-
-@SuppressWarnings("serial")
-public class LoginPanel extends JPanel {
-	
-}

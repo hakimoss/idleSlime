@@ -53,6 +53,7 @@ public class Scene extends JPanel {
 	
 	/// MenuScnene
 	
+	public boolean stats = true;
 	
 	public Upgrade upgrade;
 	public String gameSavedString ="";
@@ -98,6 +99,7 @@ public class Scene extends JPanel {
 		
 		this.setLayout(null);
 	
+	
 		upgrade = new Upgrade(hero);
 		
 		upgrade.btnDmg.setBounds(30, 500, 100, 20);
@@ -106,18 +108,23 @@ public class Scene extends JPanel {
 		upgrade.btnHealth.setBounds(150, 500, 100, 20);
 		this.add(upgrade.btnHealth);
 		
+		//if(this.hero.isSlimHerbe() == true || this.hero.isSlimFeu() == true || this.hero.isSlimEau() == true) 
 		upgrade.btnHeroFarm.setBounds(270, 500, 100, 20);
 		this.add(upgrade.btnHeroFarm);
 		
 		upgrade.btnSave.setBounds(500, 500, 100, 20);
 		this.add(upgrade.btnSave);
 		
+		upgrade.btnStats.setBounds(400, 500, 30, 30);
+		this.add(upgrade.btnStats);
+
 		this.setFocusable(true);
 		this.requestFocusInWindow();
 		
 		
 		Thread chronoEcran=new Thread(new Chrono());
 		chronoEcran.start();
+		
 		
 		
 	}
@@ -170,6 +177,8 @@ public class Scene extends JPanel {
 		}
 
 	}
+	
+
 	
 	public void setMonster() {
 		System.out.println("Stage : "+this.stage);
@@ -327,8 +336,8 @@ public class Scene extends JPanel {
 		golem=new Golem(150, 175);
 		this.tabEnemi.clear();
 	}
+	
 	public void paintComponent(Graphics g) {
-		
 		super.paintComponent(g);
 		Graphics g2=(Graphics2D) g;
 		this.deplacementFond();
@@ -351,25 +360,23 @@ public class Scene extends JPanel {
 				}
 			}
 		}
-		
+		// changement de menu
+		if(this.stats == true) {	
+			upgrade.btnDmg.setVisible(true);
+			upgrade.btnHealth.setVisible(true);
+			upgrade.btnHeroFarm.setVisible(true);
+			upgrade.btnSave.setVisible(true);	
+		}  else {
+			upgrade.btnDmg.setVisible(false);
+			upgrade.btnHealth.setVisible(false);
+			upgrade.btnHeroFarm.setVisible(false);
+			upgrade.btnSave.setVisible(false);
+		}
 	
 		// changement de stage
 		if(this.getxPos() >= 799 || this.golem.getHealth() <=0) {	
 			Main.changeScreentoLoading();
-			upgrade = new Upgrade(hero);
-			
-			upgrade.btnDmg.setBounds(30, 500, 100, 20);
-			this.add(upgrade.btnDmg);
-			
-			upgrade.btnHealth.setBounds(150, 500, 100, 20);
-			this.add(upgrade.btnHealth);
-			
-			upgrade.btnHeroFarm.setBounds(270, 500, 100, 20);
-			this.add(upgrade.btnHeroFarm);
-			
-			upgrade.btnSave.setBounds(500, 500, 100, 20);
-			this.add(upgrade.btnSave);
-			
+
 			this.xPos = -1;		
 			stage++;
 			hero.setStageMax(hero.getStageMax() + 1);
@@ -407,12 +414,11 @@ public class Scene extends JPanel {
 		
 		if(this.hero.isLibre() == true) {
 			this.hero.setMarche(true);
-			this.setDx(3);
+			this.setDx(10);
 		} else {
 			this.hero.setMarche(false);
 			this.setDx(0);
 		}
-		
 		g2.setColor(Color.WHITE);
 		//image des fond 1 et 2
 		g2.drawImage(this.imgFond1, this.xFond1, 0, null);
@@ -504,19 +510,24 @@ public class Scene extends JPanel {
 		
 		///    MENU SCENE    ///
 		
-		g2.drawImage(this.imgFondMenu, 0, 300, null);
+		if(this.stats == true) {
+			g2.drawImage(this.imgFondMenu, 0, 300, null);
+			
+			g2.drawString("Health : " + this.hero.getHealth() , 30, 330);
+			
+			g2.drawString("Damage : " + this.hero.getDmg(), 130, 330);
+			
+			g2.drawString("Gold : " + this.hero.getGold(), 230, 330);
+			
+			g2.drawString(this.hero.getDmg()*10+" Gold", 60, 490);
+			
+			g2.drawString(this.hero.getHealthLvl()*20+" Gold", 175, 490);
+			
+			g2.drawString(gameSavedString, 515, 490);
+		} else {
+			g2.drawImage(this.imgFondMenu, 0, 300, null);
+		}
 		
-		g2.drawString("Health : " + this.hero.getHealth() , 30, 330);
-		
-		g2.drawString("Damage : " + this.hero.getDmg(), 130, 330);
-		
-		g2.drawString("Gold : " + this.hero.getGold(), 230, 330);
-		
-		g2.drawString(this.hero.getDmg()*10+" Gold", 60, 490);
-		
-		g2.drawString(this.hero.getHealthLvl()*20+" Gold", 175, 490);
-		
-		g2.drawString(gameSavedString, 515, 490);
 		
 		
 		

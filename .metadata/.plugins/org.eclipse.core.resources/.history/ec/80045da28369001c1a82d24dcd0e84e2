@@ -1,5 +1,0 @@
-package com.hakim.logIn;
-
-public class LoginPanel extends JPanel {
-
-}

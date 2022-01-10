@@ -5,7 +5,6 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import com.hakim.Main;
-import com.hakim.Profil;
 import com.hakim.gameplay.Combat;
 
 public class Hero extends Personnages {
@@ -24,7 +23,10 @@ public class Hero extends Personnages {
 	private int stageMax;
 	private String email;
 	private String selectedHero;
-	private Profil profil;
+	private boolean slimHerbe;
+	private boolean slimFeu;
+	private boolean slimEau;
+
 	
 	
 	private boolean libre;
@@ -47,14 +49,29 @@ public class Hero extends Personnages {
 		this.email = null;
 		this.playerName = null;
 		this.selectedHero = null;
+		this.slimHerbe = false;
+		this.slimFeu = false;
+		this.slimEau = false;
 	
 	}
 	
+	
 
-	public Profil getProfil() {return profil;}
+	public boolean isSlimHerbe() {return slimHerbe;}
+
+	public boolean isSlimFeu() {return slimFeu;}
+	
+	public boolean isSlimEau() {return slimEau;}
 
 
-	public void setProfil(Profil profil) {this.profil = profil;}
+	public void setSlimHerbe(boolean slimHerbe) {this.slimHerbe = slimHerbe;}
+
+	public void setSlimFeu(boolean slimFeu) {this.slimFeu = slimFeu;}
+
+	public void setSlimEau(boolean slimEau) {this.slimEau = slimEau;}
+
+
+
 
 
 	//   GETTERS   //

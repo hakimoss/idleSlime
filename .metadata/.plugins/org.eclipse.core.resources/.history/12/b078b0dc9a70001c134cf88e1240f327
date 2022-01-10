@@ -1,0 +1,29 @@
+package com.hakim;
+
+
+public class ChronoSelectedCharatere implements Runnable {
+
+	public int pause = 150;
+
+	@Override
+	public void run() {
+		
+		while(true) {
+			//SelecteHeroScreen s = new SelecteHeroScreen();
+			Main.frame.repaint();
+
+			try {
+				Thread.sleep(pause);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+
+	
+	
+	
+}

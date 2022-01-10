@@ -1,19 +1,18 @@
 package com.hakim;
 
-/*
+import com.hakim.gameplay.Upgrade;
+
 public class ChronoSelectedCharatere implements Runnable {
 
-	private final int PAUSE = 3;
-	public int compteurWalk = 0;
+	private final int PAUSE = 150;
+	
 
 	@Override
 	public void run() {
-		
-		while(true) {
-			SelecteHeroScreen s = new SelecteHeroScreen();
-			s.repaint();
-			
-			
+		while(Upgrade.isExit() == false) {
+			//SelecteHeroScreen s = new SelecteHeroScreen();
+			Main.frame.repaint();
+
 			try {
 				Thread.sleep(PAUSE);
 			} catch (InterruptedException e) {
@@ -25,8 +24,8 @@ public class ChronoSelectedCharatere implements Runnable {
 	}
 
 
+
 	
 	
 	
 }
-*/

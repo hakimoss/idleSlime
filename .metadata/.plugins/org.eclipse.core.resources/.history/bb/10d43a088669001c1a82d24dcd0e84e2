@@ -1,7 +1,0 @@
-package com.hakim.logIn;
-
-import javax.swing.JPanel;
-
-public class CreateAccountPanel extends JPanel {
-
-}

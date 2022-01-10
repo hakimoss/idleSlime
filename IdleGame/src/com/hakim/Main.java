@@ -6,7 +6,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
-import com.hakim.gameplay.Upgrade;
 
 public class Main {
 	
@@ -66,20 +65,9 @@ public class Main {
 	                        		} else {
 		                        		Main.scene.setGolem();
 	                        		}
-	                        		
-	                        		Main.scene.upgrade = new Upgrade(Main.scene.hero);
-	                        		
-	                        		Main.scene.upgrade.btnDmg.setBounds(30, 500, 100, 20);
-	                        		Main.scene.upgrade.btnHealth.setBounds(150, 500, 100, 20);
-	                        		Main.scene.upgrade.btnHeroFarm.setBounds(270, 500, 100, 20);
-	                        		Main.scene.upgrade.btnSave.setBounds(500, 500, 100, 20);
-	                        		
-	                        		Main.scene.add(Main.scene.upgrade.btnHealth);
-	                        		Main.scene.add(Main.scene.upgrade.btnDmg);
-	                        		Main.scene.add(Main.scene.upgrade.btnHeroFarm);
-	                        		Main.scene.add(Main.scene.upgrade.btnSave);
-	                     
-                      		
+
+	                        		changeToStats();
+
 	                        		if(Main.scene.getStage() == 0) {
 	                        			Main.scene.setStage(1);
 	                        		} 
@@ -130,6 +118,7 @@ public class Main {
 		Main.scene.add(Main.scene.upgrade.btnDmg);
 		Main.scene.add(Main.scene.upgrade.btnHeroFarm);
 		Main.scene.add(Main.scene.upgrade.btnSave);
+		Main.scene.add(Main.scene.upgrade.btnStats);
 
 		frame.revalidate();
 		frame.repaint();
@@ -145,6 +134,20 @@ public class Main {
 		frame.setContentPane(heroFarm);
 		frame.revalidate();
 		frame.repaint();
+	}
+	
+	public static void changeToStats() {
+		if(Main.scene.stats == false) {
+			Main.scene.upgrade.btnDmg.setVisible(false);
+			Main.scene.upgrade.btnHealth.setVisible(false);
+			Main.scene.upgrade.btnHeroFarm.setVisible(false);
+			Main.scene.upgrade.btnSave.setVisible(false);
+		} else {
+			Main.scene.upgrade.btnDmg.setVisible(true);
+			Main.scene.upgrade.btnHealth.setVisible(true);
+			Main.scene.upgrade.btnHeroFarm.setVisible(true);
+			Main.scene.upgrade.btnSave.setVisible(true);
+		}
 	}
 	
 	

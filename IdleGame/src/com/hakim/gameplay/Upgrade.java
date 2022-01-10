@@ -2,11 +2,17 @@ package com.hakim.gameplay;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+
 import java.awt.Color;
 
+import com.hakim.ChronoSelectedCharatere;
 import com.hakim.Main;
 import com.hakim.Profil;
 import com.hakim.RoundedBorder;
@@ -21,8 +27,16 @@ public class Upgrade {
 	public JButton btnHeroFarm;	
 	public JButton btnScene;	
 	public JButton btnSave;
+	
+	public JLabel btnStats;
+	
+	public Thread chrono;
+	
+	
+	private static boolean exit;
 
 	public Upgrade(Hero hero) {
+		
 		btnDmg=new JButton("UP DMG");
 		btnDmg.setContentAreaFilled(false);
 		btnDmg.setBorder(new RoundedBorder(10));
@@ -32,7 +46,7 @@ public class Upgrade {
 		btnHealth.setContentAreaFilled(false);
 		btnHealth.setBorder(new RoundedBorder(10));
 		btnHealth.setForeground(Color.BLUE);
-		
+
 		btnHeroFarm = new JButton("HERO FARM");
 		btnHeroFarm.setContentAreaFilled(false);
 		btnHeroFarm.setBorder(new RoundedBorder(10));
@@ -47,6 +61,10 @@ public class Upgrade {
 		btnSave.setContentAreaFilled(false);
 		btnSave.setBorder(new RoundedBorder(10));
 		btnSave.setForeground(Color.RED);
+
+	
+		
+		btnStats = new JLabel(new ImageIcon(getClass().getResource("/images/icon/statsIcon.png")));
 		
 		btnDmg.addActionListener(new ActionListener() {
 			
@@ -75,6 +93,13 @@ public class Upgrade {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				 
+				chrono = new Thread(new ChronoSelectedCharatere());
+				
+				chrono.start();
+				exit = false;		
+			
+				
 				Main.changeToFarm();
 			}		
 		});
@@ -83,6 +108,11 @@ public class Upgrade {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				exit = true;
+				
+				
+				
 				Main.changeScreentoScene();
 			}		
 		});
@@ -119,8 +149,33 @@ public class Upgrade {
 			
 		});
 		
+		btnStats.addMouseListener(new MouseAdapter() {
+			@Override
+		    public void mouseClicked(MouseEvent e) 
+		    {
+				
+				System.out.println("mouse clicked ! ");
+				if(Main.scene.stats == false) {
+					Main.scene.stats = true;
+					
+			
+				} else {
+					Main.scene.stats = false;
+					
+				}
+		    }
+		});
+		
 	}
 	
+	
+
+	
+	//   GETTERS   //
+	public static boolean isExit() {return exit;}
+
+	//   SETTERS   //
+
 	//   METHODS   //
 
 	

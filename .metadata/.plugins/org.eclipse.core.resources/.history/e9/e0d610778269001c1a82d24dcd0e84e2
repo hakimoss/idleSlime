@@ -1,7 +1,0 @@
-package com.hakim;
-
-import javax.swing.JFrame;
-
-public class LogInScreen extends JFrame {
-
-}

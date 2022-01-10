@@ -4,16 +4,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import com.hakim.LogInScreen;
 import com.hakim.Main;
 import com.hakim.Profil;
-import com.hakim.Scene;
 import com.hakim.SelecteHeroScreen;
 
 
@@ -24,7 +25,7 @@ public class LoginPanel extends JPanel {
 	JTextField inputEmail;
 	
 	JLabel labelPassword;
-	JTextField inputPassword;
+	JPasswordField inputPassword;
 	
 	JButton btnConnection;
 	public JButton btnCreateAccount;
@@ -41,17 +42,31 @@ public class LoginPanel extends JPanel {
 	public boolean loginBoolean;
 	
 	public LoginPanel() {
+		
+		this.setLayout(null);
 		labelEmail = new JLabel("Email");
-		inputEmail = new JTextField(10);
+		labelEmail.setBounds(60, 40, 200, 30);
+		
+		inputEmail = new JTextField();
+		inputEmail.setBounds(180, 40, 200, 30);
+		inputEmail.setBorder(BorderFactory.createCompoundBorder(inputEmail.getBorder(),BorderFactory.createEmptyBorder(0, 5, 0, 5)));
 		
 		labelPassword = new JLabel("Password");
-		inputPassword = new JTextField(10);
+		labelPassword.setBounds(60, 90, 200, 30);
 		
-		btnConnection = new JButton("Connection");
-		btnCreateAccount = new JButton("Create Account");
+		inputPassword = new JPasswordField();
+		inputPassword.setBounds(180, 90, 200, 30);
+		inputPassword.setBorder(BorderFactory.createCompoundBorder(inputEmail.getBorder(),BorderFactory.createEmptyBorder(0, 5, 0, 5)));
 		
 		labelErrorMsg = new JLabel("");
+		labelErrorMsg.setBounds(100, 150, 250, 30);
 		
+		btnConnection = new JButton("Connection");
+		btnConnection.setBounds(60, 200, 100, 30);
+		
+		btnCreateAccount = new JButton("Create Account");
+		btnCreateAccount.setBounds(220, 200, 150, 30);
+
 		this.add(labelEmail);
 		this.add(inputEmail);
 		
@@ -87,12 +102,12 @@ public class LoginPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String email = inputEmail.getText();
+				@SuppressWarnings("deprecation")
 				String password = inputPassword.getText();
 				
 				
 				logIn = new LogIn();
 				profil = new Profil(email, password);	
-				Main.scene.hero.setProfil(profil);
 				try {
 					logIn.getAccount(profil);
 					if(logIn.getAccount(profil) == true) {
@@ -100,7 +115,6 @@ public class LoginPanel extends JPanel {
 							
 							Main.frame.add(Main.scene);
 							Main.frame.setVisible(true);
-							System.out.println("selected hero : "+Main.scene.hero.getSelectedHero());
 							
 							LogInScreen.frameLogin.setVisible(false);
 							
@@ -113,7 +127,7 @@ public class LoginPanel extends JPanel {
 								minuteOutOfGame = 120;
 							}
 							Main.scene.hero.setGold(Main.scene.hero.getGold() + (minuteOutOfGame * Main.scene.hero.getStageMax()));
-							//Main.scene.stage = profil.getStage();
+
 							if(Main.scene.hero.getStageMax() > 10) {
 								Main.scene.setIcoFond1(new ImageIcon(getClass().getResource("/images/stageLava.png")));
 								Main.scene.setImgFond1(Main.scene.getIcoFond1().getImage());
