@@ -1,0 +1,30 @@
+package com.hakim.equipement;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import com.hakim.Main;
+
+
+public class EquipementHandler implements ActionListener {
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String yourChoice = e.getActionCommand();
+		
+		switch(yourChoice) {
+		case "equip1":
+			Equipement.unequipe(0);
+			Main.inventory.btnInventory1.setIcon(null);
+			Main.equipement.btnEquipement1.setIcon(null);
+			break;
+		case "equip2":
+			Equipement.unequipe(1);
+			Main.equipement.btnEquipement2.setIcon(null);
+			break;
+		
+
+		}
+	}
+
+}

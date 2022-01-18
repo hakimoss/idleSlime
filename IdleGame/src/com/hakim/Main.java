@@ -6,6 +6,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+import com.hakim.equipement.Equipement;
+import com.hakim.inventory.Inventory;
+
 
 public class Main {
 	
@@ -13,12 +16,15 @@ public class Main {
 	public static HeroFarm heroFarm;
 	public static LogInScreen logInScreen;
 	public static JFrame frame;
-
+	public static Inventory inventory;
+	public static Equipement equipement;
 
 	public static void main(String[] args) {
 		
 		
 		logInScreen = new LogInScreen();
+		inventory = new Inventory();
+		equipement = new Equipement();
 		scene=new Scene();
 	
 		frame=new JFrame();
@@ -51,7 +57,12 @@ public class Main {
 	                        	changeScreentoScene();
 	                        	
 	                        	if(Main.scene.hero.isVivant() == false) {
-	                        		Main.scene.hero.setHealth(100 + ((Main.scene.hero.getHealthLvl()-1)*20));
+	                        		if(Main.scene.tabEnemi.size() == 0) {
+	                        			Main.scene.hero.setHealth(90 + (Main.scene.hero.getHealthLvl()*10)+Main.scene.golem.getDmg());
+	                        		} else {
+		                        		Main.scene.hero.setHealth(90 + (Main.scene.hero.getHealthLvl()*10)+Main.scene.tabEnemi.get(1).getDmg());
+
+	                        		}
 	                        		Main.scene.hero.setVivant(true);
 	                        		Main.scene.hero.setEnCombat(false);
 	                        		Main.scene.hero.setLibre(true);
@@ -115,10 +126,14 @@ public class Main {
 		
 		frame.setContentPane(Main.scene);
 		Main.scene.add(Main.scene.upgrade.btnHealth);
+		Main.scene.add(Main.scene.upgrade.btnHealthRegen);
 		Main.scene.add(Main.scene.upgrade.btnDmg);
-		Main.scene.add(Main.scene.upgrade.btnHeroFarm);
 		Main.scene.add(Main.scene.upgrade.btnSave);
 		Main.scene.add(Main.scene.upgrade.btnStats);
+		Main.scene.add(Main.scene.upgrade.btnFarm);
+		Main.scene.add(Main.scene.upgrade.btnRelic);
+		Main.scene.add(Main.scene.upgrade.btnInventory);
+		Main.scene.add(Main.scene.upgrade.btnEquipement);
 
 		frame.revalidate();
 		frame.repaint();
@@ -140,14 +155,17 @@ public class Main {
 		if(Main.scene.stats == false) {
 			Main.scene.upgrade.btnDmg.setVisible(false);
 			Main.scene.upgrade.btnHealth.setVisible(false);
-			Main.scene.upgrade.btnHeroFarm.setVisible(false);
 			Main.scene.upgrade.btnSave.setVisible(false);
+			Main.scene.upgrade.btnHealthRegen.setVisible(false);
+		
 		} else {
 			Main.scene.upgrade.btnDmg.setVisible(true);
 			Main.scene.upgrade.btnHealth.setVisible(true);
-			Main.scene.upgrade.btnHeroFarm.setVisible(true);
 			Main.scene.upgrade.btnSave.setVisible(true);
+			Main.scene.upgrade.btnHealthRegen.setVisible(true);
+	
 		}
+
 	}
 	
 	

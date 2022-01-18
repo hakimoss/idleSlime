@@ -1,0 +1,10 @@
+package com.hakim.item;
+
+public class Potion extends Item {
+
+	Potion(String name, String rarity) {
+		super(name, rarity);
+		// TODO Auto-generated constructor stub
+	}
+
+}

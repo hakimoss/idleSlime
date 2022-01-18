@@ -1,0 +1,39 @@
+package com.hakim.inventory;
+
+import java.awt.event.MouseListener;
+
+import javax.swing.JLabel;
+
+public class Inventory {
+	String [] itemInInventory;
+	public JLabel btnInventory1, btnInventory2, btnInventory3, btnInventory4, btnInventory5, btnInventory6, btnInventory7, btnInventory8, btnInventory9, btnInventory10;
+	
+	public Inventory() {
+		InventoryHandler iHandler = new InventoryHandler();
+		
+		itemInInventory = new String[10];
+		
+		btnInventory1 = new JLabel("1");
+		btnInventory1.addMouseListener((MouseListener) iHandler);
+		btnInventory1.setActionCommand("item1");
+		btnInventory2 = new JLabel("2");
+		btnInventory2.addMouseListener((MouseListener) iHandler);
+		btnInventory3 = new JLabel("3");
+		btnInventory3.addMouseListener((MouseListener) iHandler);
+		btnInventory4 = new JLabel("4");
+		btnInventory4.addMouseListener((MouseListener) iHandler);
+		btnInventory5 = new JLabel("5");
+		btnInventory5.addMouseListener((MouseListener) iHandler);
+		btnInventory6 = new JLabel("6");
+		btnInventory6.addMouseListener((MouseListener) iHandler);
+		btnInventory7 = new JLabel("7");
+		btnInventory7.addMouseListener((MouseListener) iHandler);
+		btnInventory8 = new JLabel("8");
+		btnInventory8.addMouseListener((MouseListener) iHandler);
+		btnInventory9 = new JLabel("9");
+		btnInventory9.addMouseListener((MouseListener) iHandler);
+		btnInventory10 = new JLabel("10");
+		btnInventory10.addMouseListener((MouseListener) iHandler);
+	}
+
+}

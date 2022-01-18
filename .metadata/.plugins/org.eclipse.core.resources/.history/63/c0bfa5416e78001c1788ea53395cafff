@@ -1,0 +1,10 @@
+package com.hakim.equipement;
+
+public class DmgEquipement extends Equipement {
+	
+	DmgEquipement(String name, String rarity, String type) {
+		super(name, rarity, type);
+		// TODO Auto-generated constructor stub
+	}
+
+}

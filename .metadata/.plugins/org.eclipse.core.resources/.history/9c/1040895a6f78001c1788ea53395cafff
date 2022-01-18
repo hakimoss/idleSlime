@@ -1,0 +1,8 @@
+package com.hakim.equipement;
+
+import javax.swing.JButton;
+
+public class Equipement {
+	public JButton btnEquipement1;
+	public JButton btnEquipement2;
+}

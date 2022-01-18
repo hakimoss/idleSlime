@@ -1,0 +1,41 @@
+package com.hakim.inventory;
+
+import java.awt.Color;
+import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+
+public class Inventory {
+	String [] itemInInventory;
+	public JButton btnInventory1, btnInventory2, btnInventory3, btnInventory4, btnInventory5, btnInventory6, btnInventory7, btnInventory8, btnInventory9, btnInventory10;
+	
+	public Inventory() {
+		InventoryHandler iHandler = new InventoryHandler();
+		
+		itemInInventory = new String[10];
+		
+		btnInventory1 = new JButton("1");
+		btnInventory1.setBackground(Color.BLACK);
+		btnInventory1.addActionListener(iHandler);
+		btnInventory1.setActionCommand("item1");
+		btnInventory2 = new JButton("2");
+		btnInventory2.addActionListener(iHandler);
+		btnInventory3 = new JButton("3");
+		btnInventory3.addActionListener(iHandler);
+		btnInventory4 = new JButton("4");
+		btnInventory4.addActionListener(iHandler);
+		btnInventory5 = new JButton("5");
+		btnInventory5.addActionListener(iHandler);
+		btnInventory6 = new JButton("6");
+		btnInventory6.addActionListener(iHandler);
+		btnInventory7 = new JButton("7");
+		btnInventory7.addActionListener(iHandler);
+		btnInventory8 = new JButton("8");
+		btnInventory8.addActionListener(iHandler);
+		btnInventory9 = new JButton("9");
+		btnInventory9.addActionListener(iHandler);
+		btnInventory10 = new JButton("10");
+		btnInventory10.addActionListener(iHandler);
+	}
+
+}

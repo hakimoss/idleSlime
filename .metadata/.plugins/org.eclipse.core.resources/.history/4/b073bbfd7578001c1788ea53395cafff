@@ -1,0 +1,80 @@
+package com.hakim.equipement;
+
+import java.awt.Image;
+import java.io.IOException;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
+public class DmgEquipement {
+	public String name;
+	public String rarity;
+	public int dmg;
+	public Image img;
+
+	public DmgEquipement(String rarity) {
+		this.rarity = rarity;
+		Random rand = new Random(); //instance of random class
+		if(rarity == "white") {
+			int upperbound = 3;
+			int stats1Value = rand.nextInt(upperbound); 
+			this.dmg = stats1Value + 1;
+			this.name = "RDW";
+			try {
+				this.img = ImageIO.read(getClass().getResource("/images/item/runeDmgWhite.png"));
+			} catch (IOException e) {e.printStackTrace();}
+		} else if(rarity == "green") {
+			int upperbound = 6;
+			int stats1Value = rand.nextInt(upperbound); 
+			this.dmg = stats1Value + 3;
+			this.name = "RDG";
+		} else if(rarity == "blue") {
+			int upperbound = 10;
+			int stats1Value = rand.nextInt(upperbound); 
+			this.dmg = stats1Value + 6;
+			this.name = "RDB";
+		} else if(rarity == "purple") {
+			int upperbound = 20;
+			int stats1Value = rand.nextInt(upperbound); 
+			this.dmg = stats1Value + 10;
+			this.name = "RDP";
+		} else if(rarity == "orange") {
+			int upperbound = 50;
+			int stats1Value = rand.nextInt(upperbound); 
+			this.dmg = stats1Value + 20;
+			this.name = "RDO";
+		} else {
+			System.out.println("mauvai choix de rareté");
+		}
+	}
+	
+	public DmgEquipement(String name, String rarity, int dmg) {
+		this.name = name;
+		this.rarity = rarity;
+		this.dmg = dmg;
+	}
+
+	/*
+	public void equipementWhite() {
+		// 1 stats (1-3 value)
+
+	}
+	
+	public void equipementGreen() {
+		// 2 stats (3-6 value)
+	}
+	
+	public void equipementBlue() {
+		// 3 stats (6-10 value)
+	}
+	
+	public void equipementPurple() {
+		// 4 stats (10-20 value)
+	}
+	
+	public void equipementOrange() {
+		// 5 stats (20-50 value)
+	}
+	*/
+}

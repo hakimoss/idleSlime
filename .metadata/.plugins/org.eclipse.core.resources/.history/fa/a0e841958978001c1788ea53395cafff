@@ -1,0 +1,9 @@
+package com.hakim.item;
+
+public class Item {
+	
+	
+	Item() {
+		
+	}
+}

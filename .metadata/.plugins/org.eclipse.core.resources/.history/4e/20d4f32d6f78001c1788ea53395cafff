@@ -1,0 +1,31 @@
+package com.hakim.equipement;
+
+import java.util.Random;
+
+public class Equipement {
+	String name;
+	String rarity;
+
+	
+	
+	
+	Equipement(String name, String rarity, String type) {
+		this.name = name;
+		this.rarity = rarity;
+		
+		if(rarity == "white") {
+			equipementWhite();
+		} else if(rarity == "green") {
+			equipementGreen();
+		} else if(rarity == "blue") {
+			equipementBlue();
+		} else if(rarity == "purple") {
+			equipementPurple();
+		} else if(rarity == "orange") {
+			equipementOrange();
+		}
+	}
+	
+	
+	
+}

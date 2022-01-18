@@ -1,0 +1,27 @@
+package com.hakim.equipement;
+
+import java.util.Random;
+
+public class DmgEquipement {
+	String name;
+	String rarity;
+	int dmg;
+
+	DmgEquipement(String rarity) {
+		this.rarity = rarity;
+		
+		Random rand = new Random(); //instance of random class
+		
+		
+		if(rarity == "white") {
+			int upperbound = 3;
+			int stats1Value = rand.nextInt(upperbound); 
+			this.dmg = stats1Value + 1;
+		} else if(rarity == "green") {
+			int upperbound = 7;
+			int stats1Value = rand.nextInt(upperbound); 
+			this.dmg = stats1Value + 4;
+		}
+	}
+
+}

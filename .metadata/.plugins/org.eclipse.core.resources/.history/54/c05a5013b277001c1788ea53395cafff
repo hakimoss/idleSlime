@@ -1,0 +1,14 @@
+package com.hakim.inventory;
+
+import javax.swing.JLabel;
+
+public class Inventory {
+	String [] itemInInventory;
+	JLabel btnInventory1, btnInventory2, btnInventory3, btnInventory4, btnInventory5, btnInventory6, btnInventory7, btnInventory8, btnInventory9, btnInventory10;
+	
+	Inventory() {
+		itemInInventory = new String[10];
+		
+	}
+
+}

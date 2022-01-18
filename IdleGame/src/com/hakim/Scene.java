@@ -1,12 +1,15 @@
 package com.hakim;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.Font;
 import java.awt.font.TextAttribute;
 
 import com.hakim.gameplay.Upgrade;
+import com.hakim.item.Potion;
+import com.hakim.item.RuneDmg;
 import com.hakim.logIn.LoginPanel;
 import com.hakim.personnages.Enemi;
 import com.hakim.personnages.Flamme;
@@ -27,8 +30,17 @@ public class Scene extends JPanel {
 	private Image imgFond1;
 	private Image imgFond2;
 	
-	Image imgFondMenu;
-	private ImageIcon icoFondMenu;
+	private Image imgFondMenuStats;
+	private ImageIcon icoFondMenuStats;
+	
+	private Image imgFondMenuRelic;
+	private ImageIcon icoFondMenuRelic;
+	
+	private Image imgFondMenuInventory;
+	private ImageIcon icoFondMenuInventory;
+	
+	private Image imgFondMenuEquipement;
+	private ImageIcon icoFondMenuEquipement;
 
 	public Hero hero;
 	
@@ -44,16 +56,29 @@ public class Scene extends JPanel {
 	private int xPos;
 	private int yDmgString;
 	
+
+	private JLabel labelHealth;
+	private JLabel labelHealthRegen;
+	private JLabel labelDmg;
+	private JLabel labelGold;
+	private JLabel labelRelicHerbe;
+	private JLabel labelRelicFeu;
+	private JLabel labelRelicEau;
+
+	
 	private String inactiveTimeGain = "";
 	
-	private Golem golem;
+	public Golem golem;
 	
 	private boolean showGoldGainInactiveTimeGain = true;
-	
 	
 	/// MenuScnene
 	
 	public boolean stats = true;
+	public boolean farm = false;
+	public boolean relic = false;
+	public boolean inventoryIcon = false;
+	public boolean equipement = false;
 	
 	public Upgrade upgrade;
 	public String gameSavedString ="";
@@ -72,12 +97,60 @@ public class Scene extends JPanel {
 		imgFond1 = icoFond1.getImage();
 		imgFond2 = icoFond1.getImage();
 		
-		icoFondMenu = new ImageIcon(getClass().getResource("/images/fondMenuScene.png"));
-		imgFondMenu = icoFondMenu.getImage();
+		icoFondMenuStats = new ImageIcon(getClass().getResource("/images/icon/menuStats.png"));
+		imgFondMenuStats = icoFondMenuStats.getImage();
+		
+		icoFondMenuRelic = new ImageIcon(getClass().getResource("/images/icon/menuRelic.png"));
+		imgFondMenuRelic = icoFondMenuRelic.getImage();
+		
+		icoFondMenuInventory = new ImageIcon(getClass().getResource("/images/icon/menuInventory.png"));
+		imgFondMenuInventory = icoFondMenuInventory.getImage();
+		
+		icoFondMenuEquipement = new ImageIcon(getClass().getResource("/images/icon/menuEquipement.png"));
+		imgFondMenuEquipement = icoFondMenuEquipement.getImage();
+		
+		// img icon stats
+		
+		labelHealth = new JLabel();
+		labelHealth.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/hearthIcon.png")).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH)));
+		labelHealth.setBounds(10, 350, 64, 64);
+		
+		
+		labelHealthRegen = new JLabel();
+		labelHealthRegen.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/hearthRegenIcon.png")).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH)));
+		labelHealthRegen.setBounds(10, 400, 64, 64);
+		
+		
+		labelDmg = new JLabel();
+		labelDmg.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/dmgIcon.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+		labelDmg.setBounds(25, 460, 40, 40);
+		
+		
+		labelGold = new JLabel();
+		labelGold.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/goldIcon.png")).getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH)));
+		labelGold.setBounds(500, 5, 32, 32);
+		
+		
+		labelRelicHerbe = new JLabel();
+		labelRelicHerbe.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicHerbeIcon.png")).getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH)));
+		labelRelicHerbe.setBounds(600, 5, 32, 32);
+		this.add(labelRelicHerbe);
+		
+		labelRelicFeu = new JLabel();
+		labelRelicFeu.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicFeuIcon.png")).getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH)));
+		labelRelicFeu.setBounds(650, 5, 32, 32);
+		this.add(labelRelicFeu);
+		
+		labelRelicEau = new JLabel();
+		labelRelicEau.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicEauIcon.png")).getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH)));
+		labelRelicEau.setBounds(700, 5, 32, 32);
+		this.add(labelRelicEau);
+		
+
 
 		hero=new Hero(50, 183);
 		golem=new Golem(150, 175);
-
+		
 		if(this.hero.getStageMax() == 10) {
 			setGolem();
 			tabEnemi.clear();
@@ -102,21 +175,36 @@ public class Scene extends JPanel {
 	
 		upgrade = new Upgrade(hero);
 		
-		upgrade.btnDmg.setBounds(30, 500, 100, 20);
-		this.add(upgrade.btnDmg);
-		
-		upgrade.btnHealth.setBounds(150, 500, 100, 20);
+		upgrade.btnHealth.setBounds(150, 375, 100, 20);
 		this.add(upgrade.btnHealth);
 		
+		upgrade.btnHealthRegen.setBounds(150, 425, 100, 20);
+		this.add(upgrade.btnHealthRegen);
+		
+		upgrade.btnDmg.setBounds(150, 475, 100, 20);
+		this.add(upgrade.btnDmg);
+
 		//if(this.hero.isSlimHerbe() == true || this.hero.isSlimFeu() == true || this.hero.isSlimEau() == true) 
-		upgrade.btnHeroFarm.setBounds(270, 500, 100, 20);
-		this.add(upgrade.btnHeroFarm);
+
 		
 		upgrade.btnSave.setBounds(500, 500, 100, 20);
 		this.add(upgrade.btnSave);
 		
-		upgrade.btnStats.setBounds(400, 500, 30, 30);
+		upgrade.btnStats.setBounds(25, 305, 45, 40);
 		this.add(upgrade.btnStats);
+		
+		upgrade.btnFarm.setBounds(125, 306, 45, 40);
+		this.add(upgrade.btnFarm);
+		
+		upgrade.btnRelic.setBounds(222, 307, 45, 40);
+		this.add(upgrade.btnRelic);
+		
+		upgrade.btnInventory.setBounds(325, 305, 45, 40);
+		this.add(upgrade.btnInventory);
+		
+		upgrade.btnEquipement.setBounds(425, 305, 45, 40);
+		this.add(upgrade.btnEquipement);
+		
 
 		this.setFocusable(true);
 		this.requestFocusInWindow();
@@ -181,7 +269,6 @@ public class Scene extends JPanel {
 
 	
 	public void setMonster() {
-		System.out.println("Stage : "+this.stage);
 		if(this.stage <= 10) {
 			enemi=new Enemi(150, 175);
 			enemi.setHealth(enemi.getHealth() * this.stage);
@@ -329,7 +416,6 @@ public class Scene extends JPanel {
 			tabEnemi.add(flamme10);
 		}
 			
-	
 	}
 	
 	public void setGolem() {
@@ -341,7 +427,7 @@ public class Scene extends JPanel {
 		super.paintComponent(g);
 		Graphics g2=(Graphics2D) g;
 		this.deplacementFond();
-	
+
 		//contact entre le hero et les enemi
 		for(int i = 0; i < tabEnemi.size(); i++) {
 			if(this.hero.proche(this.tabEnemi.get(i))) {
@@ -361,18 +447,256 @@ public class Scene extends JPanel {
 			}
 		}
 		// changement de menu
+		this.add(labelGold);
+		this.add(labelRelicHerbe);
+		this.add(labelRelicFeu);
+		this.add(labelRelicEau);
+		
 		if(this.stats == true) {	
+			upgrade.btnDmg.setText("DMG " + this.hero.getDmg()*10);
+			upgrade.btnHealth.setText("HEALTH " + hero.getHealthLvl()*20);
+			upgrade.btnHealthRegen.setText("REGEN " + hero.getHealthRegen()*50);
+
+			upgrade.btnRelic.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+			upgrade.btnFarm.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/farmIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+			upgrade.btnStats.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/statsIcon.png")).getImage().getScaledInstance(45, 40, Image.SCALE_SMOOTH)));
+			upgrade.btnInventory.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/inventoryIcon.png")).getImage().getScaledInstance(40,  35, Image.SCALE_SMOOTH)));
+			upgrade.btnEquipement.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/equipementIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+
 			upgrade.btnDmg.setVisible(true);
 			upgrade.btnHealth.setVisible(true);
-			upgrade.btnHeroFarm.setVisible(true);
-			upgrade.btnSave.setVisible(true);	
-		}  else {
+			upgrade.btnHealthRegen.setVisible(true);
+
+			this.add(labelHealth);
+			this.add(labelDmg);
+			this.add(labelHealthRegen);
+			
+		}  else if(this.relic == true) {
+			upgrade.btnRelic.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicIcon.png")).getImage().getScaledInstance(45, 40, Image.SCALE_SMOOTH)));
+			upgrade.btnFarm.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/farmIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+			upgrade.btnStats.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/statsIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+			upgrade.btnInventory.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/inventoryIcon.png")).getImage().getScaledInstance(40,  35, Image.SCALE_SMOOTH)));
+			upgrade.btnEquipement.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/equipementIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+
+			
 			upgrade.btnDmg.setVisible(false);
 			upgrade.btnHealth.setVisible(false);
-			upgrade.btnHeroFarm.setVisible(false);
-			upgrade.btnSave.setVisible(false);
+			upgrade.btnHealthRegen.setVisible(false);
+			
+			this.remove(labelHealth);
+			this.remove(labelHealthRegen);
+			this.remove(labelDmg);
+
+		} else if(this.inventoryIcon == true) {
+		
+			upgrade.btnRelic.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+			upgrade.btnFarm.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/farmIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+			upgrade.btnStats.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/statsIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+			upgrade.btnInventory.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/inventoryIcon.png")).getImage().getScaledInstance(45,  40, Image.SCALE_SMOOTH)));
+			upgrade.btnEquipement.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/equipementIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+
+			
+			upgrade.btnDmg.setVisible(false);
+			upgrade.btnHealth.setVisible(false);
+			upgrade.btnHealthRegen.setVisible(false);
+			
+			this.remove(labelHealth);
+			this.remove(labelHealthRegen);
+			this.remove(labelDmg);
+			
+			
+			
+			Main.inventory.btnInventory1.setBounds(80, 380, 50, 50);
+			Main.inventory.btnInventory2.setBounds(180, 380, 50, 50);
+			Main.inventory.btnInventory3.setBounds(280, 380, 50, 50);
+			Main.inventory.btnInventory4.setBounds(380, 380, 50, 50);
+			Main.inventory.btnInventory5.setBounds(480, 380, 50, 50);
+			
+			Main.inventory.btnInventory6.setBounds(80, 440, 50, 50);
+			Main.inventory.btnInventory7.setBounds(180, 440, 50, 50);
+			Main.inventory.btnInventory8.setBounds(280, 440, 50, 50);
+			Main.inventory.btnInventory9.setBounds(380, 440, 50, 50);
+			Main.inventory.btnInventory10.setBounds(480, 440, 50, 50);
+			
+			this.add(Main.inventory.btnInventory1);
+			this.add(Main.inventory.btnInventory2);
+			this.add(Main.inventory.btnInventory3);
+			this.add(Main.inventory.btnInventory4);
+			this.add(Main.inventory.btnInventory5);
+			this.add(Main.inventory.btnInventory6);
+			this.add(Main.inventory.btnInventory7);
+			this.add(Main.inventory.btnInventory8);
+			this.add(Main.inventory.btnInventory9);
+			this.add(Main.inventory.btnInventory10);
+
+			Potion potion = new Potion("white");
+			
+			RuneDmg runeDmgWhite = new RuneDmg("white");
+			
+			
+			if(hero.itemInInventory[0].name != "" && hero.itemInInventory[0].name != null) {
+				switch(hero.itemInInventory[0].name) {
+				case "P":
+					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory1.setToolTipText("Potion: +10 hp");
+					break;
+				case "RDW":
+					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory1.setToolTipText("Rune Damage: "+ hero.itemInInventory[0].dmg);
+					break;	
+				}		
+			}
+			if(hero.itemInInventory[1].name != "" && hero.itemInInventory[1].name != null) {
+				switch(hero.itemInInventory[1].name) {
+				case "P":
+					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory2.setToolTipText("Potion: +10 hp");
+					break;
+				case "RDW":
+					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory2.setToolTipText("Rune DMg: +"+hero.itemInInventory[1].dmg);
+					break;	
+				}
+				
+			}
+			if(hero.itemInInventory[2].name != "" && hero.itemInInventory[2].name != null) {
+				switch(hero.itemInInventory[2].name) {
+				case "P":
+					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory3.setToolTipText("Potion: +10 hp");
+					break;
+				case "RDW":
+					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory3.setToolTipText("Rune DMg: +"+hero.itemInInventory[2].dmg);
+					break;	
+				}			
+			}
+			if(hero.itemInInventory[3].name != "" && hero.itemInInventory[3].name != null) {
+				switch(hero.itemInInventory[3].name) {
+				case "P":
+					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory4.setToolTipText("Potion: +10 hp");
+					break;
+				case "RDW":
+					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory4.setToolTipText("Rune DMg: +"+hero.itemInInventory[3].dmg);
+					break;	
+				}			
+			}
+			if(hero.itemInInventory[4].name != "" && hero.itemInInventory[4].name != null) {
+				switch(hero.itemInInventory[4].name) {
+				case "P":
+					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory5.setToolTipText("Potion: +10 hp");
+					break;
+				case "RDW":
+					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory5.setToolTipText("Rune DMg: +"+hero.itemInInventory[4].dmg);
+					break;	
+				}
+			}
+			if(hero.itemInInventory[5].name != "" && hero.itemInInventory[5].name != null) {
+				switch(hero.itemInInventory[5].name) {
+				case "P":
+					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory6.setToolTipText("Potion: +10 hp");
+					break;
+				case "RDW":
+					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory6.setToolTipText("Rune DMg: +"+hero.itemInInventory[5].dmg);
+					break;	
+				}
+			}
+			if(hero.itemInInventory[6].name != "" && hero.itemInInventory[6].name != null) {
+				switch(hero.itemInInventory[6].name) {
+				case "P":
+					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory7.setToolTipText("Potion: +10 hp");
+					break;
+				case "RDW":
+					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory7.setToolTipText("Rune DMg: +"+hero.itemInInventory[6].dmg);
+					break;		
+				}		
+			}
+			if(hero.itemInInventory[7].name != "" && hero.itemInInventory[7].name != null) {
+				switch(hero.itemInInventory[7].name) {
+				case "P":
+					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory8.setToolTipText("Potion: +10 hp");
+					break;
+				case "RDW":
+					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory8.setToolTipText("Rune DMg: +"+hero.itemInInventory[7].dmg);
+					break;	
+				}		
+			}
+			if(hero.itemInInventory[8].name != "" && hero.itemInInventory[8].name != null) {
+				switch(hero.itemInInventory[8].name) {
+				case "P":
+					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory9.setToolTipText("Potion: +10 hp");
+					break;
+				case "RDW":
+					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory9.setToolTipText("Rune DMg: +"+hero.itemInInventory[8].dmg);
+					break;		
+				}			
+			}
+			if(hero.itemInInventory[9].name != "" && hero.itemInInventory[9].name != null) {
+				switch(hero.itemInInventory[9].name) {
+				case "P":
+					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory10.setToolTipText("Potion: +10 hp");
+					break;
+				case "RDW":
+					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					Main.inventory.btnInventory10.setToolTipText("Rune DMg: +"+hero.itemInInventory[9].dmg);
+					break;	
+				}	
+			}
+			
+
+		} else if (this.equipement == true) {
+			upgrade.btnRelic.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+			upgrade.btnFarm.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/farmIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+			upgrade.btnStats.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/statsIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
+			upgrade.btnInventory.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/inventoryIcon.png")).getImage().getScaledInstance(40,  35, Image.SCALE_SMOOTH)));
+			upgrade.btnEquipement.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/equipementIcon.png")).getImage().getScaledInstance(45, 40, Image.SCALE_SMOOTH)));
+
+			
+			upgrade.btnDmg.setVisible(false);
+			upgrade.btnHealth.setVisible(false);
+			upgrade.btnHealthRegen.setVisible(false);
+			
+			this.remove(labelHealth);
+			this.remove(labelHealthRegen);
+			this.remove(labelDmg);
+			
+			Main.equipement.btnEquipement1.setBounds(80, 380, 50, 50);
+			Main.equipement.btnEquipement2.setBounds(180, 380, 50, 50);
+			
+			this.add(Main.equipement.btnEquipement1);
+			this.add(Main.equipement.btnEquipement2);
+			
+			RuneDmg runeDmgWhite = new RuneDmg("white");
+			
+			if(hero.equipedItem[0].name != "") {
+				switch(hero.equipedItem[0].name) {
+				case "RDW":
+					Main.equipement.btnEquipement1.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+					break;	
+				}		
+			}
+			if(hero.equipedItem[1].name != "") {
+				switch(hero.equipedItem[1].name) {
+				case "RDW":
+					Main.equipement.btnEquipement2.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+					break;	
+				}		
+			}
 		}
-	
+
 		// changement de stage
 		if(this.getxPos() >= 799 || this.golem.getHealth() <=0) {	
 			Main.changeScreentoLoading();
@@ -414,7 +738,7 @@ public class Scene extends JPanel {
 		
 		if(this.hero.isLibre() == true) {
 			this.hero.setMarche(true);
-			this.setDx(10);
+			this.setDx(3);
 		} else {
 			this.hero.setMarche(false);
 			this.setDx(0);
@@ -426,7 +750,6 @@ public class Scene extends JPanel {
 		g2.drawImage(this.imgFond2, this.xFond2, 0, null);
 
 		// images des monstre
-	
 		for(int i = 0; i < this.tabEnemi.size(); i++) {
 			if(this.stage<= 10) {
 				if(this.tabEnemi.get(i).isVivant() == true) {
@@ -438,9 +761,7 @@ public class Scene extends JPanel {
 				if(this.tabEnemi.get(i).isVivant() == true) {
 					g2.drawImage(this.tabEnemi.get(i).marche("flamme", 100), this.tabEnemi.get(i).getX(), this.tabEnemi.get(i).getY(), null);
 				} else {
-					g2.drawImage(this.tabEnemi.get(i).marche("flamme", 100), this.tabEnemi.get(i).getX(), this.tabEnemi.get(i).getY(), null);
-
-					//g2.drawImage(this.tabEnemi.get(i).mortImg("flamme", 100), this.tabEnemi.get(i).getX(), this.tabEnemi.get(i).getY(), null);
+					g2.drawImage(this.tabEnemi.get(i).mortImg("flamme", 100), this.tabEnemi.get(i).getX(), this.tabEnemi.get(i).getY(), null);
 				}
 			}
 			
@@ -509,27 +830,46 @@ public class Scene extends JPanel {
 		g2.drawString(inactiveTimeGain, 320, 50);
 		
 		///    MENU SCENE    ///
-		
+		Font myFont = new Font ("Courier New", 1, 17);
+		g2.setFont (myFont);
+		g2.setColor(Color.BLACK);
 		if(this.stats == true) {
-			g2.drawImage(this.imgFondMenu, 0, 300, null);
+			g2.drawImage(this.imgFondMenuStats, 0, 300, null);
 			
-			g2.drawString("Health : " + this.hero.getHealth() , 30, 330);
+			g2.drawString(""+this.hero.getHealth()+"/"+(90+this.hero.getHealthLvl()*10) , 70, 390);
+			//healthRegen
+			g2.drawString(""+this.hero.getHealthRegen() , 70, 440);
 			
-			g2.drawString("Damage : " + this.hero.getDmg(), 130, 330);
+			g2.drawString("" + this.hero.getDmg(), 70, 490);
 			
-			g2.drawString("Gold : " + this.hero.getGold(), 230, 330);
 			
-			g2.drawString(this.hero.getDmg()*10+" Gold", 60, 490);
 			
-			g2.drawString(this.hero.getHealthLvl()*20+" Gold", 175, 490);
+			//g2.drawString(this.hero.getDmg()*10+" Gold", 60, 490);
 			
-			g2.drawString(gameSavedString, 515, 490);
-		} else {
-			g2.drawImage(this.imgFondMenu, 0, 300, null);
+			//g2.drawString(this.hero.getHealthLvl()*20+" Gold", 175, 490);
+			
+			g2.drawString(gameSavedString, 495, 490);
+		} else if(this.relic == true) {
+			g2.drawImage(this.imgFondMenuRelic, 0, 300, null);
+			g2.drawString(gameSavedString, 495, 490);
+		} else if (this.inventoryIcon == true) {
+			g2.drawImage(this.imgFondMenuInventory, 0, 300, null);
+			g2.drawString(gameSavedString, 495, 490);
+		} else if(this.equipement == true) {
+			g2.drawImage(this.imgFondMenuEquipement, 0, 300, null);
+			g2.drawString(gameSavedString, 495, 490);
 		}
 		
 		
+		g2.setColor(Color.WHITE);
+		g2.drawString("" + this.hero.getGold(), 535, 25);
 		
+		//relic Herbe
+		g2.drawString(""+0, 630, 25);
+		//relic Feu
+		g2.drawString(""+0, 680, 25);
+		//relic Eau
+		g2.drawString(""+0, 730, 25);
 		
 	}
 	

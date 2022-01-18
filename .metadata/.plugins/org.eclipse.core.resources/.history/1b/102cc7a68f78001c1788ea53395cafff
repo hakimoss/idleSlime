@@ -1,0 +1,23 @@
+package com.hakim.item;
+
+
+
+
+public class Item {
+	public String name;
+	String rarity;
+	
+	public Item() {
+		
+	}
+	Item(String rarity) {
+		this.rarity = rarity;	
+	}
+	
+	Item(String name, String rarity) {
+		this.name = name;
+		this.rarity = rarity;
+	}
+	
+	
+}

@@ -1,0 +1,14 @@
+package com.hakim.inventory;
+
+public class Equipement {
+	String name;
+	String rarity;
+	String type;
+	
+	
+	Equipement(String name, String rarity) {
+		this.name = name;
+		this.rarity = rarity;
+		this.type = type;
+	}
+}

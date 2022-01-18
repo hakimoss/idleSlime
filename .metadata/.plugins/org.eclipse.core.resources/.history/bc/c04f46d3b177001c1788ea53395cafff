@@ -1,0 +1,12 @@
+package com.hakim.inventory;
+
+public class Inventory {
+	String [] itemInInventory;
+
+	
+	Inventory() {
+		itemInInventory = new String[10];
+		
+	}
+
+}

@@ -1,0 +1,62 @@
+package com.hakim.inventory;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import com.hakim.Main;
+
+
+
+public class InventoryHandler implements ActionListener {
+	
+	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		String yourChoice = e.getActionCommand();
+		
+		
+		switch(yourChoice) {
+		case "item1":
+			Inventory.btnInventory1.setText("");
+
+			Inventory.itemUsed(0);
+
+			break;
+		case "item2":
+			Inventory.itemUsed(1);
+			break;
+		case "item3":
+			Inventory.itemUsed(2);
+			break;
+		case "item4":
+			Inventory.itemUsed(3);
+			break;
+		case "item5":
+			Inventory.itemUsed(4);
+			break;
+		case "item6":
+			Inventory.itemUsed(5);
+			break;
+		case "item7":
+			Inventory.itemUsed(6);
+			break;
+		case "item8":
+			Inventory.itemUsed(7);
+			break;
+		case "item9":
+			Inventory.itemUsed(8);
+			break;
+		case "item10":
+			Inventory.itemUsed(9);
+			break;
+
+		}
+
+		
+		
+		
+	}
+
+}

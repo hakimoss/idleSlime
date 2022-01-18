@@ -1,11 +1,16 @@
 package com.hakim.personnages;
 
 import java.awt.Image;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 
 import com.hakim.Main;
 import com.hakim.gameplay.Combat;
+import com.hakim.gameplay.TimeListener;
+import com.hakim.item.Item;
+import com.hakim.item.RuneDmg;
 
 public class Hero extends Personnages {
 	
@@ -17,7 +22,9 @@ public class Hero extends Personnages {
 	
 	private int health;
 	private int healthLvl;
+	private int healthRegen;
 	private int dmg;
+	private int dmgAvantEquip;
 	private int gold;
 	private int dmgPrice;
 	private int stageMax;
@@ -32,16 +39,28 @@ public class Hero extends Personnages {
 	private boolean libre;
 	private boolean enCombat;
 
+	private int compteurHealthRegen;
+	
+	//public String[] itemInInventory = new String[10];
+	
+	public Item[] itemInInventory = new Item[10];
+		
+	public Item[] equipedItem = new Item[2];
+
+	
 	public Hero(int x, int y) {
 		super(x, y, 60, 49);
-		
+	
 		this.icoHero = new ImageIcon(getClass().getResource("/images/hero1Droite.png"));
 		this.imgHero = this.icoHero.getImage();
 		this.libre = true;
+		RuneDmg runeDamage1 = new RuneDmg("RDW", "white", 3);
 		
 		this.healthLvl = 1;
-		this.health = 100;
+		this.health = 90;
+		this.healthRegen = 1;
 		this.dmg = 2;
+		this.dmgAvantEquip = 2;
 		this.enCombat = false;
 		this.gold = 0;
 		this.dmgPrice = this.dmg*10;
@@ -52,27 +71,22 @@ public class Hero extends Personnages {
 		this.slimHerbe = false;
 		this.slimFeu = false;
 		this.slimEau = false;
-	
+		this.itemInInventory[0] = new Item();
+		this.itemInInventory[1] = new Item();
+		this.itemInInventory[2] = new Item();
+		this.itemInInventory[3] = new Item();
+		this.itemInInventory[4] = new Item();
+		this.itemInInventory[5] = new Item();
+		this.itemInInventory[6] = new Item();
+		this.itemInInventory[7] = new Item();
+		this.itemInInventory[8] = new Item();
+		this.itemInInventory[9] = new Item();
+		
+		
+		this.equipedItem[0] = new RuneDmg();	
+		this.equipedItem[1] = new RuneDmg();
+		
 	}
-	
-	
-
-	public boolean isSlimHerbe() {return slimHerbe;}
-
-	public boolean isSlimFeu() {return slimFeu;}
-	
-	public boolean isSlimEau() {return slimEau;}
-
-
-	public void setSlimHerbe(boolean slimHerbe) {this.slimHerbe = slimHerbe;}
-
-	public void setSlimFeu(boolean slimFeu) {this.slimFeu = slimFeu;}
-
-	public void setSlimEau(boolean slimEau) {this.slimEau = slimEau;}
-
-
-
-
 
 	//   GETTERS   //
 	public Image getImgHero() {return imgHero;}
@@ -82,6 +96,8 @@ public class Hero extends Personnages {
 	public int getHealth() {return health;}
 	
 	public int getDmg() {return dmg;}
+	
+	public int getDmgAvantEquip() {return dmgAvantEquip;}
 	
 	public boolean isEnCombat() {return enCombat;}
 	
@@ -101,12 +117,22 @@ public class Hero extends Personnages {
 	
 	public String getSelectedHero() {return selectedHero;}
 	
+	public boolean isSlimHerbe() {return slimHerbe;}
+
+	public boolean isSlimFeu() {return slimFeu;}
+	
+	public boolean isSlimEau() {return slimEau;}
+
+	public int getHealthRegen() {return healthRegen;}
+	
 	//   SETTERS   //
 	public void setLibre(boolean libre) {this.libre = libre;}
 	
 	public void setHealth(int health) {this.health = health;}
 	
 	public void setDmg(int dmg) {this.dmg = dmg;}
+	
+	public void setDmgAvantEquip(int dmgAvantEquip) {this.dmgAvantEquip = dmgAvantEquip;}
 
 	public void setEnCombat(boolean enCombat) {this.enCombat = enCombat;}
 	
@@ -125,6 +151,14 @@ public class Hero extends Personnages {
 	public void setLastUpdate(long lastUpdate) {this.lastUpdate = lastUpdate;}
 	
 	public void setSelectedHero(String selectedHero) {this.selectedHero = selectedHero;}
+	
+	public void setSlimHerbe(boolean slimHerbe) {this.slimHerbe = slimHerbe;}
+
+	public void setSlimFeu(boolean slimFeu) {this.slimFeu = slimFeu;}
+
+	public void setSlimEau(boolean slimEau) {this.slimEau = slimEau;}
+
+	public void setHealthRegen(int healthRegen) {this.healthRegen = healthRegen;}
 
 	//   METHODS   //
 	public void contact(Personnages personnage) {
@@ -147,7 +181,71 @@ public class Hero extends Personnages {
 		
 	}
 	
-	
+	public Image marche(String nom, int frequence) {
+
+		String str;
+		ImageIcon ico;
+		Image img;
+		
+
+		
+		if(this.marche == false) {
+			if(this.isVersDroite() == true) {
+				str = "/images/"+nom+"1Droite.png";
+			} else {
+				str = "images/"+nom+"1Gauche.png";
+			}		
+		} else {
+			ActionListener listener = new TimeListener();
+			Timer timer = new Timer(1000, listener);
+			timer.start();
+			this.compteurMarche++;
+			
+			
+		
+			if(this.compteurMarche >=4) {
+				this.compteurMarche = 0;
+			}
+			if(this.health < 90 + (healthLvl * 10)) {
+				this.compteurHealthRegen++;
+				if(this.compteurHealthRegen >=20) {
+					
+					this.health = this.health + this.healthRegen;
+					this.compteurHealthRegen = 0;
+					if(this.health > 90 + (healthLvl * 10)) {
+						this.health = 90 + (healthLvl * 10);
+					}
+				}
+			}
+			
+			if(this.isVersDroite() == true) {
+				if(this.compteurMarche == 1) {
+					str = "/images/"+nom+"2Droite.png";
+				} else if(this.compteurMarche == 2) {
+					str = "/images/"+nom+"3Droite.png";
+				} else if(this.compteurMarche == 3) {
+					str = "/images/"+nom+"4Droite.png";
+				} else {
+					str = "/images/"+nom+"1Droite.png";
+				}
+			} else {
+				if(this.compteurMarche == 1) {
+					str = "/images/"+nom+"2Gauche.png";
+				} else if(this.compteurMarche == 2) {
+					str = "/images/"+nom+"3Gauche.png";
+				} else if(this.compteurMarche == 3) {
+					str = "/images/"+nom+"4Gauche.png";
+				} else {
+					str = "/images/"+nom+"1Gauche.png";
+				}
+			}
+			
+		} 
+		ico=new ImageIcon(getClass().getResource(str));
+		img=ico.getImage();
+		return img;
+		
+	}
 	
 	
 	

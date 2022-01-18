@@ -1,0 +1,19 @@
+package com.hakim.inventory;
+
+public class Equipement {
+	String name;
+	String rarity;
+	String type;
+	
+	
+	Equipement(String name, String rarity, String type) {
+		this.name = name;
+		this.rarity = rarity;
+		this.type = type;
+	}
+	
+	
+	public void equipemntWhite() {
+		
+	}
+}

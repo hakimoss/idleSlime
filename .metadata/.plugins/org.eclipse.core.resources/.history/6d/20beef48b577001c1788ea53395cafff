@@ -1,0 +1,68 @@
+package com.hakim.inventory;
+
+import java.awt.Color;
+
+import javax.swing.JButton;
+
+public class Inventory {
+	String [] itemInInventory;
+	public JButton btnInventory1, btnInventory2, btnInventory3, btnInventory4, btnInventory5, btnInventory6, btnInventory7, btnInventory8, btnInventory9, btnInventory10;
+	
+	public Inventory() {
+		InventoryHandler iHandler = new InventoryHandler();
+		
+		itemInInventory = new String[10];
+		
+		btnInventory1 = new JButton("1");
+		btnInventory1.setBackground(Color.decode("#827575"));
+		btnInventory1.setFocusPainted(false);
+		btnInventory1.addActionListener(iHandler);
+		btnInventory1.setActionCommand("item1");
+		btnInventory2 = new JButton("2");
+		btnInventory2.setBackground(Color.decode("#827575"));
+		btnInventory2.setFocusPainted(false);
+		btnInventory2.addActionListener(iHandler);
+		btnInventory2.setActionCommand("item2");
+		btnInventory3 = new JButton("3");
+		btnInventory3.setBackground(Color.decode("#827575"));
+		btnInventory3.setFocusPainted(false);
+		btnInventory3.addActionListener(iHandler);
+		btnInventory3.setActionCommand("item1");
+		btnInventory4 = new JButton("4");
+		btnInventory4.setBackground(Color.decode("#827575"));
+		btnInventory4.setFocusPainted(false);
+		btnInventory4.addActionListener(iHandler);
+		btnInventory4.setActionCommand("item1");
+		btnInventory5 = new JButton("5");
+		btnInventory5.setBackground(Color.decode("#827575"));
+		btnInventory5.setFocusPainted(false);
+		btnInventory5.addActionListener(iHandler);
+		btnInventory5.setActionCommand("item1");
+		btnInventory6 = new JButton("6");
+		btnInventory6.setBackground(Color.decode("#827575"));
+		btnInventory6.setFocusPainted(false);
+		btnInventory6.addActionListener(iHandler);
+		btnInventory6.setActionCommand("item1");
+		btnInventory7 = new JButton("7");
+		btnInventory7.setBackground(Color.decode("#827575"));
+		btnInventory7.setFocusPainted(false);
+		btnInventory7.addActionListener(iHandler);
+		btnInventory7.setActionCommand("item1");
+		btnInventory8 = new JButton("8");
+		btnInventory8.setBackground(Color.decode("#827575"));
+		btnInventory8.setFocusPainted(false);
+		btnInventory8.addActionListener(iHandler);
+		btnInventory8.setActionCommand("item1");
+		btnInventory9 = new JButton("9");
+		btnInventory9.setBackground(Color.decode("#827575"));
+		btnInventory9.setFocusPainted(false);
+		btnInventory9.addActionListener(iHandler);
+		btnInventory9.setActionCommand("item1");
+		btnInventory10 = new JButton("10");
+		btnInventory10.setBackground(Color.decode("#827575"));
+		btnInventory10.setFocusPainted(false);
+		btnInventory10.addActionListener(iHandler);
+		btnInventory10.setActionCommand("item1");
+	}
+
+}

@@ -3,12 +3,10 @@
     <fullyQualifiedTypeName name="com.hakim.personnages.Enemi"/>
     <fullyQualifiedTypeName name="com.hakim.Combat"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
     <fullyQualifiedTypeName name="com.hakim.personnages.Hero"/>
     <fullyQualifiedTypeName name="java.net.URL"/>
     <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
     <fullyQualifiedTypeName name="javax.swing.border.Border"/>
-    <fullyQualifiedTypeName name="javax.swing.BorderFactory"/>
     <fullyQualifiedTypeName name="java.util.Timer"/>
     <fullyQualifiedTypeName name="com.hakim.ChronoWalkCycle"/>
     <fullyQualifiedTypeName name="com.hakim.TimeListener"/>
@@ -20,7 +18,6 @@
     <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
     <fullyQualifiedTypeName name="javax.swing.JTextField"/>
-    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
     <fullyQualifiedTypeName name="com.hakim.logIn.CreateAccountPanel"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="com.hakim.logIn.LogIn"/>
@@ -39,4 +36,12 @@
     <fullyQualifiedTypeName name="com.hakim.Chrono"/>
     <fullyQualifiedTypeName name="com.hakim.ChronoSelectedCharatere"/>
     <fullyQualifiedTypeName name="com.hakim.gameplay.Upgrade"/>
+    <fullyQualifiedTypeName name="javax.swing.JPasswordField"/>
+    <fullyQualifiedTypeName name="javax.swing.BorderFactory"/>
+    <fullyQualifiedTypeName name="java.awt.event.MouseEvent"/>
+    <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
+    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+    <fullyQualifiedTypeName name="java.awt.Image"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="com.hakim.personnages.Golem"/>
 </qualifiedTypeNameHistroy>

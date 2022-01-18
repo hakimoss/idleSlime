@@ -1,0 +1,17 @@
+package com.hakim.item;
+
+public class Potion extends Item {
+	String name;
+	Image img;
+	
+	public Potion(String rarity) {
+		super(rarity);
+		this.name = "P";
+	}
+
+	Potion(String name, String rarity) {
+		super(name, rarity);
+		
+	}
+
+}

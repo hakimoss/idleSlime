@@ -18,7 +18,7 @@ public class LogIn {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/idleslim", "root", "");
-			PreparedStatement ps = conn.prepareStatement("insert into account(email,password,name,stage,dmg,health,gold,selectedHero,slimHerbe,slimFeu,slimEau) value(?,?,?,1,2,0,0,?,0,0,0)");
+			PreparedStatement ps = conn.prepareStatement("insert into account(email,password,name,stage,dmg,health,healthRegen,gold,selectedHero,slimHerbe,slimFeu,slimEau) value(?,?,?,1,2,1,1,0,?,0,0,0)");
 			ps.setString(1, p.getEmail());
 			ps.setString(2, p.getPassword());
 			ps.setString(3, p.getName());
@@ -69,12 +69,13 @@ public class LogIn {
 			ps.setString(2, p.getPassword());
 			rs = ps.executeQuery();
 			  if(rs.next()) {
-	              System.out.println("Success");
 	              connectedbool = true;
 	              
-	              Main.scene.hero.setHealth(rs.getInt("health")*20+100);
+	              Main.scene.hero.setHealth(rs.getInt("health")*10+90);
 	              Main.scene.hero.setHealthLvl(rs.getInt("health"));
+	              Main.scene.hero.setHealthRegen(rs.getInt("healthRegen"));
 	              Main.scene.hero.setDmg(rs.getInt("dmg"));
+	              Main.scene.hero.setDmgAvantEquip(rs.getInt("dmg"));
 	              Main.scene.hero.setGold(rs.getInt("gold"));
 	              Main.scene.hero.setEmail(rs.getString("email"));
 	              Main.scene.hero.setStageMax(rs.getInt("stage"));
@@ -123,14 +124,15 @@ public class LogIn {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/idleslim", "root", "");
-			ps = conn.prepareStatement("update account set stage = ?, health = ?, dmg = ?, gold = ?, lastUpdate = ?, selectedHero = ? where email = ?");
+			ps = conn.prepareStatement("update account set stage = ?, health = ?, healthRegen = ?, dmg = ?, gold = ?, lastUpdate = ?, selectedHero = ? where email = ?");
 			ps.setInt(1, p.getStage());
 			ps.setInt(2, p.getHealth());
-			ps.setInt(3, p.getDmg());
-			ps.setInt(4, p.getGold());
-			ps.setLong(5, start);
-			ps.setString(6, Main.scene.hero.getSelectedHero());
-			ps.setString(7, p.getEmail());
+			ps.setInt(3, p.getHealthRegen());
+			ps.setInt(4, p.getDmg());
+			ps.setInt(5, p.getGold());
+			ps.setLong(6, start);
+			ps.setString(7, Main.scene.hero.getSelectedHero());
+			ps.setString(8, p.getEmail());
 			
 			ps.executeUpdate();
 			ps.close();

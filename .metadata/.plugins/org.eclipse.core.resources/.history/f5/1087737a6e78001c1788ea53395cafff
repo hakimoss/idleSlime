@@ -1,0 +1,24 @@
+package com.hakim.equipement;
+
+import java.util.Random;
+
+public class DmgEquipement {
+	String name;
+	String rarity;
+	int dmg;
+
+	DmgEquipement(String rarity) {
+		this.rarity = rarity;
+		
+		Random rand = new Random(); //instance of random class
+		int upperbound = 3;
+        //generate random values from 0-2
+		
+		int stats1Value = rand.nextInt(upperbound); 
+		
+		if(rarity == "white") {
+			
+		}
+	}
+
+}

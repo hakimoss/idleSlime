@@ -1,0 +1,10 @@
+package com.hakim.item;
+
+public class RuneDmg extends Item {
+
+	RuneDmg(String name, String rarity) {
+		super(name, rarity);
+		
+	}
+
+}
