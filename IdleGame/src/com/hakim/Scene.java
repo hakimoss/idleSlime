@@ -1,11 +1,13 @@
 package com.hakim;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.Font;
 import java.awt.font.TextAttribute;
+import java.io.IOException;
 
 import com.hakim.gameplay.Upgrade;
 import com.hakim.item.Potion;
@@ -18,6 +20,9 @@ import com.hakim.personnages.Hero;
 import com.hakim.personnages.Personnages;
 
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.AttributedString;
 import java.util.ArrayList;
 import java.awt.Graphics;
@@ -56,7 +61,6 @@ public class Scene extends JPanel {
 	private int xPos;
 	private int yDmgString;
 	
-
 	private JLabel labelHealth;
 	private JLabel labelHealthRegen;
 	private JLabel labelDmg;
@@ -65,12 +69,12 @@ public class Scene extends JPanel {
 	private JLabel labelRelicFeu;
 	private JLabel labelRelicEau;
 
-	
 	private String inactiveTimeGain = "";
 	
 	public Golem golem;
 	
 	private boolean showGoldGainInactiveTimeGain = true;
+	public boolean showDetailItem = false;
 	
 	/// MenuScnene
 	
@@ -83,7 +87,6 @@ public class Scene extends JPanel {
 	public Upgrade upgrade;
 	public String gameSavedString ="";
 
-	
 	public Scene() {
 		super();
 		this.stage = 1;
@@ -145,8 +148,6 @@ public class Scene extends JPanel {
 		labelRelicEau.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicEauIcon.png")).getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH)));
 		labelRelicEau.setBounds(700, 5, 32, 32);
 		this.add(labelRelicEau);
-		
-
 
 		hero=new Hero(50, 183);
 		golem=new Golem(150, 175);
@@ -168,24 +169,21 @@ public class Scene extends JPanel {
 			imgFond1 = icoFond1.getImage();
 			imgFond2 = icoFond1.getImage();
 		}
-		
-		
+			
 		this.setLayout(null);
-	
 	
 		upgrade = new Upgrade(hero);
 		
-		upgrade.btnHealth.setBounds(150, 375, 100, 20);
+		upgrade.btnHealth.setBounds(150, 375, 100, 35);
 		this.add(upgrade.btnHealth);
 		
-		upgrade.btnHealthRegen.setBounds(150, 425, 100, 20);
+		upgrade.btnHealthRegen.setBounds(150, 425, 100, 35);
 		this.add(upgrade.btnHealthRegen);
 		
-		upgrade.btnDmg.setBounds(150, 475, 100, 20);
+		upgrade.btnDmg.setBounds(150, 475, 100, 35);
 		this.add(upgrade.btnDmg);
 
 		//if(this.hero.isSlimHerbe() == true || this.hero.isSlimFeu() == true || this.hero.isSlimEau() == true) 
-
 		
 		upgrade.btnSave.setBounds(500, 500, 100, 20);
 		this.add(upgrade.btnSave);
@@ -212,8 +210,9 @@ public class Scene extends JPanel {
 		
 		Thread chronoEcran=new Thread(new Chrono());
 		chronoEcran.start();
-		
-		
+
+
+	
 		
 	}
 
@@ -453,9 +452,17 @@ public class Scene extends JPanel {
 		this.add(labelRelicEau);
 		
 		if(this.stats == true) {	
-			upgrade.btnDmg.setText("DMG " + this.hero.getDmg()*10);
-			upgrade.btnHealth.setText("HEALTH " + hero.getHealthLvl()*20);
-			upgrade.btnHealthRegen.setText("REGEN " + hero.getHealthRegen()*50);
+			try {
+				Image goldImage = ImageIO.read(getClass().getResource("/images/icon/goldIcon.png"));
+				upgrade.btnDmg.setIcon(new ImageIcon(goldImage));
+				upgrade.btnHealth.setIcon(new ImageIcon(goldImage));
+				upgrade.btnHealthRegen.setIcon(new ImageIcon(goldImage));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			upgrade.btnDmg.setText("<html><p style='margin-right:15px;'>" + this.hero.getDmgAvantEquip()*10+"</p></html>");
+			upgrade.btnHealth.setText("<html><p style='margin-right:15px;'>" + hero.getHealthLvl()*20+"</p></html>");
+			upgrade.btnHealthRegen.setText("<html><p style='margin-right:15px;'>" + hero.getHealthRegen()*50+"</p></html>");
 
 			upgrade.btnRelic.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
 			upgrade.btnFarm.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/farmIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
@@ -518,6 +525,11 @@ public class Scene extends JPanel {
 			Main.inventory.btnInventory9.setBounds(380, 440, 50, 50);
 			Main.inventory.btnInventory10.setBounds(480, 440, 50, 50);
 			
+			Main.inventory.btnDelete.setBounds(80, 500, 100, 20);
+			Main.inventory.btnEquipe.setBounds(180, 500, 100, 20);
+			
+			Main.inventory.itemDescription.setBounds(600, 250, 200, 300);
+			
 			this.add(Main.inventory.btnInventory1);
 			this.add(Main.inventory.btnInventory2);
 			this.add(Main.inventory.btnInventory3);
@@ -528,134 +540,386 @@ public class Scene extends JPanel {
 			this.add(Main.inventory.btnInventory8);
 			this.add(Main.inventory.btnInventory9);
 			this.add(Main.inventory.btnInventory10);
+			
+			this.add(Main.inventory.btnDelete);
+			this.add(Main.inventory.btnEquipe);
+			this.add(Main.inventory.itemDescription);
+			
+			if(showDetailItem == true) {
+				Main.inventory.btnDelete.setVisible(true);
+				Main.inventory.btnEquipe.setVisible(true);
+				Main.inventory.itemDescription.setVisible(true);
+			} else {
+				Main.inventory.btnDelete.setVisible(false);
+				Main.inventory.btnEquipe.setVisible(false);
+				Main.inventory.itemDescription.setVisible(false);
+			}
 
-			Potion potion = new Potion("white");
+			Potion pPotionWhite = new Potion("white");
+			Potion pPotionGreen = new Potion("green");
+			Potion pPotionBlue = new Potion("blue");
+			Potion pPotionPurple = new Potion("purple");
+			Potion pPotionOrange = new Potion("orange");
 			
 			RuneDmg runeDmgWhite = new RuneDmg("white");
+			RuneDmg runeDmgGreen = new RuneDmg("green");
+			RuneDmg runeDmgBlue = new RuneDmg("blue");
+			RuneDmg runeDmgPurple = new RuneDmg("purple");
+			RuneDmg runeDmgOrange = new RuneDmg("orange");
 			
 			
 			if(hero.itemInInventory[0].name != "" && hero.itemInInventory[0].name != null) {
 				switch(hero.itemInInventory[0].name) {
-				case "P":
-					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory1.setToolTipText("Potion: +10 hp");
+				case "PW":
+					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(pPotionWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PG":
+					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(pPotionGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PB":
+					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(pPotionBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PP":
+					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(pPotionPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PO":
+					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(pPotionOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 					break;
 				case "RDW":
 					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory1.setToolTipText("Rune Damage: "+ hero.itemInInventory[0].dmg);
 					break;	
+				case "RDG":
+					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.inventory.btnInventory1.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "":
+					System.out.println("pas d'objet");
+					break;
 				}		
 			}
 			if(hero.itemInInventory[1].name != "" && hero.itemInInventory[1].name != null) {
 				switch(hero.itemInInventory[1].name) {
-				case "P":
-					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory2.setToolTipText("Potion: +10 hp");
+				case "PW":
+					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(pPotionWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PG":
+					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(pPotionGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PB":
+					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(pPotionBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PP":
+					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(pPotionPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PO":
+					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(pPotionOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 					break;
 				case "RDW":
 					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory2.setToolTipText("Rune DMg: +"+hero.itemInInventory[1].dmg);
 					break;	
+				case "RDG":
+					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.inventory.btnInventory2.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
 				}
 				
 			}
 			if(hero.itemInInventory[2].name != "" && hero.itemInInventory[2].name != null) {
 				switch(hero.itemInInventory[2].name) {
-				case "P":
-					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory3.setToolTipText("Potion: +10 hp");
+				case "PW":
+					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(pPotionWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PG":
+					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(pPotionGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PB":
+					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(pPotionBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PP":
+					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(pPotionPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PO":
+					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(pPotionOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 					break;
 				case "RDW":
 					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory3.setToolTipText("Rune DMg: +"+hero.itemInInventory[2].dmg);
 					break;	
+				case "RDG":
+					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.inventory.btnInventory3.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
 				}			
 			}
 			if(hero.itemInInventory[3].name != "" && hero.itemInInventory[3].name != null) {
 				switch(hero.itemInInventory[3].name) {
-				case "P":
-					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory4.setToolTipText("Potion: +10 hp");
+				case "PW":
+					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(pPotionWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PG":
+					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(pPotionGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PB":
+					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(pPotionBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PP":
+					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(pPotionPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PO":
+					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(pPotionOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 					break;
 				case "RDW":
 					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory4.setToolTipText("Rune DMg: +"+hero.itemInInventory[3].dmg);
 					break;	
+				case "RDG":
+					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.inventory.btnInventory4.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
 				}			
 			}
 			if(hero.itemInInventory[4].name != "" && hero.itemInInventory[4].name != null) {
 				switch(hero.itemInInventory[4].name) {
-				case "P":
-					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory5.setToolTipText("Potion: +10 hp");
+				case "PW":
+					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(pPotionWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PG":
+					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(pPotionGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PB":
+					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(pPotionBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PP":
+					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(pPotionPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PO":
+					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(pPotionOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 					break;
 				case "RDW":
 					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory5.setToolTipText("Rune DMg: +"+hero.itemInInventory[4].dmg);
 					break;	
+				case "RDG":
+					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.inventory.btnInventory5.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
 				}
 			}
 			if(hero.itemInInventory[5].name != "" && hero.itemInInventory[5].name != null) {
 				switch(hero.itemInInventory[5].name) {
-				case "P":
-					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory6.setToolTipText("Potion: +10 hp");
+				case "PW":
+					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(pPotionWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PG":
+					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(pPotionGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PB":
+					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(pPotionBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PP":
+					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(pPotionPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PO":
+					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(pPotionOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 					break;
 				case "RDW":
 					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory6.setToolTipText("Rune DMg: +"+hero.itemInInventory[5].dmg);
 					break;	
+				case "RDG":
+					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.inventory.btnInventory6.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
 				}
 			}
 			if(hero.itemInInventory[6].name != "" && hero.itemInInventory[6].name != null) {
 				switch(hero.itemInInventory[6].name) {
-				case "P":
-					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory7.setToolTipText("Potion: +10 hp");
+				case "PW":
+					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(pPotionWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PG":
+					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(pPotionGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PB":
+					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(pPotionBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PP":
+					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(pPotionPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PO":
+					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(pPotionOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 					break;
 				case "RDW":
 					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory7.setToolTipText("Rune DMg: +"+hero.itemInInventory[6].dmg);
-					break;		
+					break;	
+				case "RDG":
+					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.inventory.btnInventory7.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
 				}		
 			}
 			if(hero.itemInInventory[7].name != "" && hero.itemInInventory[7].name != null) {
 				switch(hero.itemInInventory[7].name) {
-				case "P":
-					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory8.setToolTipText("Potion: +10 hp");
+				case "PW":
+					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(pPotionWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PG":
+					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(pPotionGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PB":
+					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(pPotionBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PP":
+					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(pPotionPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PO":
+					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(pPotionOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 					break;
 				case "RDW":
 					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory8.setToolTipText("Rune DMg: +"+hero.itemInInventory[7].dmg);
 					break;	
+				case "RDG":
+					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.inventory.btnInventory8.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
 				}		
 			}
 			if(hero.itemInInventory[8].name != "" && hero.itemInInventory[8].name != null) {
 				switch(hero.itemInInventory[8].name) {
-				case "P":
-					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory9.setToolTipText("Potion: +10 hp");
+				case "PW":
+					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(pPotionWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PG":
+					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(pPotionGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PB":
+					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(pPotionBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PP":
+					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(pPotionPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PO":
+					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(pPotionOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 					break;
 				case "RDW":
 					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory9.setToolTipText("Rune DMg: +"+hero.itemInInventory[8].dmg);
-					break;		
+					break;	
+				case "RDG":
+					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.inventory.btnInventory9.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
 				}			
 			}
 			if(hero.itemInInventory[9].name != "" && hero.itemInInventory[9].name != null) {
 				switch(hero.itemInInventory[9].name) {
-				case "P":
-					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(potion.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory10.setToolTipText("Potion: +10 hp");
+				case "PW":
+					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(pPotionWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PG":
+					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(pPotionGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PB":
+					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(pPotionBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PP":
+					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(pPotionPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "PO":
+					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(pPotionOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
 					break;
 				case "RDW":
 					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
-					Main.inventory.btnInventory10.setToolTipText("Rune DMg: +"+hero.itemInInventory[9].dmg);
 					break;	
+				case "RDG":
+					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.inventory.btnInventory10.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+					break;
 				}	
 			}
 			
+			this.addMouseListener((MouseListener) new MouseAdapter() {
+				 @Override
+			      public void mouseClicked(MouseEvent e) {
+			        Main.scene.showDetailItem = false;	
+					Main.inventory.itemDescription.setText(null);
+			      }
+			});
 
 		} else if (this.equipement == true) {
 			upgrade.btnRelic.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
@@ -680,12 +944,28 @@ public class Scene extends JPanel {
 			this.add(Main.equipement.btnEquipement2);
 			
 			RuneDmg runeDmgWhite = new RuneDmg("white");
+			RuneDmg runeDmgGreen = new RuneDmg("green");
+			RuneDmg runeDmgBlue = new RuneDmg("blue");
+			RuneDmg runeDmgPurple = new RuneDmg("purple");
+			RuneDmg runeDmgOrange = new RuneDmg("orange");
 			
 			if(hero.equipedItem[0].name != "") {
 				switch(hero.equipedItem[0].name) {
 				case "RDW":
 					Main.equipement.btnEquipement1.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
 					break;	
+				case "RDG":
+					Main.equipement.btnEquipement1.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.equipement.btnEquipement1.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.equipement.btnEquipement1.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.equipement.btnEquipement1.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+					break;
 				}		
 			}
 			if(hero.equipedItem[1].name != "") {
@@ -693,10 +973,26 @@ public class Scene extends JPanel {
 				case "RDW":
 					Main.equipement.btnEquipement2.setIcon(new ImageIcon(new ImageIcon(runeDmgWhite.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
 					break;	
-				}		
+				case "RDG":
+					Main.equipement.btnEquipement2.setIcon(new ImageIcon(new ImageIcon(runeDmgGreen.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+					break;
+				case "RDB":
+					Main.equipement.btnEquipement2.setIcon(new ImageIcon(new ImageIcon(runeDmgBlue.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+					break;
+				case "RDP":
+					Main.equipement.btnEquipement2.setIcon(new ImageIcon(new ImageIcon(runeDmgPurple.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+					break;
+				case "RDO":
+					Main.equipement.btnEquipement2.setIcon(new ImageIcon(new ImageIcon(runeDmgOrange.img).getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH)));
+					break;
+					
+				}	
+				
 			}
 		}
 
+		
+		
 		// changement de stage
 		if(this.getxPos() >= 799 || this.golem.getHealth() <=0) {	
 			Main.changeScreentoLoading();
@@ -800,10 +1096,7 @@ public class Scene extends JPanel {
 		Font font = new Font("LucidaSans", Font.PLAIN, 20);
 		AttributedString atString= new AttributedString("Stage : " + this.stage);
 		atString.addAttribute(TextAttribute.FONT, font);
-		
-	
-		
-		
+
 		g2.drawString(atString.getIterator(), 320, 30);
 		
 		

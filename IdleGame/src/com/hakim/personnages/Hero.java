@@ -54,7 +54,7 @@ public class Hero extends Personnages {
 		this.icoHero = new ImageIcon(getClass().getResource("/images/hero1Droite.png"));
 		this.imgHero = this.icoHero.getImage();
 		this.libre = true;
-		RuneDmg runeDamage1 = new RuneDmg("RDW", "white", 3);
+		//RuneDmg runeDamage1 = new RuneDmg("RDW", "white", 3);
 		
 		this.healthLvl = 1;
 		this.health = 90;

@@ -5,8 +5,10 @@ import java.awt.event.ActionListener;
 
 
 
+
 public class EquipementHandler implements ActionListener {
 
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String yourChoice = e.getActionCommand();
@@ -14,6 +16,7 @@ public class EquipementHandler implements ActionListener {
 		switch(yourChoice) {
 		case "equip1":
 			Equipement.unequipe(0);
+			
 			break;
 		case "equip2":
 			Equipement.unequipe(1);

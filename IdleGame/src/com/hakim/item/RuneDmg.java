@@ -35,21 +35,33 @@ public class RuneDmg extends Item {
 			int stats1Value = rand.nextInt(upperbound); 
 			this.dmg = stats1Value + 3;
 			this.name = "RDG";
+			try {
+				this.img = ImageIO.read(getClass().getResource("/images/item/runeDmgGreen.png"));
+			} catch (IOException e) {e.printStackTrace();}
 		} else if(rarity == "blue") {
 			int upperbound = 10;
 			int stats1Value = rand.nextInt(upperbound); 
 			this.dmg = stats1Value + 6;
 			this.name = "RDB";
+			try {
+				this.img = ImageIO.read(getClass().getResource("/images/item/runeDmgBlue.png"));
+			} catch (IOException e) {e.printStackTrace();}
 		} else if(rarity == "purple") {
 			int upperbound = 20;
 			int stats1Value = rand.nextInt(upperbound); 
 			this.dmg = stats1Value + 10;
 			this.name = "RDP";
+			try {
+				this.img = ImageIO.read(getClass().getResource("/images/item/runeDmgPurple.png"));
+			} catch (IOException e) {e.printStackTrace();}
 		} else if(rarity == "orange") {
 			int upperbound = 50;
 			int stats1Value = rand.nextInt(upperbound); 
 			this.dmg = stats1Value + 20;
 			this.name = "RDO";
+			try {
+				this.img = ImageIO.read(getClass().getResource("/images/item/runeDmgOrange.png"));
+			} catch (IOException e) {e.printStackTrace();}
 		} else {
 			System.out.println("mauvai choix de rareté");
 		}

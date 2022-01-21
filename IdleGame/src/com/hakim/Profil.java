@@ -10,14 +10,11 @@ public class Profil implements Serializable {
 	private String name;
 	private int stage;
 	private int dmg;
+	private int dmgAvantEquip;
 	private int health;
 	private int healthRegen;
 	private int gold;
 	private String selectedHero;
-
-
-	
-
 
 	//   GETTERS   //
 	public int getId() {return id;}
@@ -31,6 +28,8 @@ public class Profil implements Serializable {
 	public int getStage() {return stage;}
 
 	public int getDmg() {return dmg;}
+	
+	public int getDmgAvantEquip() {return dmgAvantEquip;}
 	
 	public int getHealth() {return health;}
 	
@@ -52,6 +51,8 @@ public class Profil implements Serializable {
 	public void setStage(int stage) {this.stage = stage;}
 	
 	public void setDmg(int dmg) {this.dmg = dmg;}
+	
+	public void setDmgAvantEquip(int dmgAvantEquip) {this.dmgAvantEquip = dmgAvantEquip;}
 	
 	public void setHealth(int health) {this.health = health;}
 	
@@ -83,13 +84,14 @@ public class Profil implements Serializable {
 		this.name = name;
 	
 	}
-	public Profil(String email, int stage, int health, int healthRegen, int dmg, int gold) {
+	public Profil(String email, int stage, int health, int healthRegen, int dmg, int dmgAvantEquip, int gold) {
 		super();
 		this.email = email;
 		this.stage = stage;
 		this.health = health;
 		this.healthRegen = healthRegen;
 		this.dmg = dmg;
+		this.dmgAvantEquip = dmgAvantEquip;
 		this.gold = gold;
 	}
 	

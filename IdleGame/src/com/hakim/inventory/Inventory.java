@@ -1,11 +1,14 @@
 package com.hakim.inventory;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import com.hakim.Main;
-import com.hakim.item.RuneDmg;
+import com.hakim.item.Item;
 
 public class Inventory {
 	public JButton btnInventory1;
@@ -19,9 +22,16 @@ public class Inventory {
 	public JButton btnInventory9;
 	public JButton btnInventory10;
 	
+	public JButton btnDelete;
+	public JButton btnEquipe;
+	
+	public JLabel itemDescription;
+
+	public static int slotNbSelected;
+
+	
 	public Inventory() {
 		InventoryHandler iHandler = new InventoryHandler();
-
 		
 		btnInventory1 = new JButton();
 		btnInventory1.setBackground(Color.decode("#827575"));
@@ -74,35 +84,191 @@ public class Inventory {
 		btnInventory10.setFocusPainted(false);
 		btnInventory10.addActionListener(iHandler);
 		btnInventory10.setActionCommand("item10");
+		
+		
+		btnDelete = new JButton("DELETE");
+		btnEquipe = new JButton("EQUIPE");
+		
+		itemDescription = new JLabel();
+	
+		
+		btnDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				String example = "RDG/DMG/10";
+				System.out.println("item : "+example);
+				System.out.println("stats : "+example.substring(example.lastIndexOf("/") - 3));
+				System.out.println("valeur : "+example.substring(example.lastIndexOf("/") + 1));
+				if(example.startsWith("RDG")) {
+					System.out.println("donne une rune rouge de rareté verte");
+					if(example.substring(example.lastIndexOf("/") - 3).startsWith("DMG")) {
+						System.out.println("la rune a une stat de DMG");
+						System.out.println("la rune a une valeu de dmg de : " +example.substring(example.lastIndexOf("/") + 1));
+					}
+				}
+				
+				
+				Main.scene.hero.itemInInventory[slotNbSelected]= new Item();
+
+				Main.scene.showDetailItem = false;	
+				itemDescription.setText(null);
+				deleteIcon();
+			}
+		});
+		
+		btnEquipe.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				switch(Main.scene.hero.itemInInventory[slotNbSelected].name) {		
+				case "PW":
+					System.out.println("health avant : "+Main.scene.hero.getHealth());
+					Main.scene.hero.setHealth(Main.scene.hero.getHealth() + 10);
+					System.out.println("health apres : "+Main.scene.hero.getHealth());
+					Main.scene.hero.itemInInventory[slotNbSelected].name = "";
+					break;
+				case "PG":
+					System.out.println("health avant : "+Main.scene.hero.getHealth());
+					Main.scene.hero.setHealth(Main.scene.hero.getHealth() + 20);
+					System.out.println("health apres : "+Main.scene.hero.getHealth());
+					Main.scene.hero.itemInInventory[slotNbSelected].name = "";
+					break;
+				case "PB":
+					System.out.println("health avant : "+Main.scene.hero.getHealth());
+					Main.scene.hero.setHealth(Main.scene.hero.getHealth() + 30);
+					System.out.println("health apres : "+Main.scene.hero.getHealth());
+					Main.scene.hero.itemInInventory[slotNbSelected].name = "";
+					break;
+				case "PP":
+					System.out.println("health avant : "+Main.scene.hero.getHealth());
+					Main.scene.hero.setHealth(Main.scene.hero.getHealth() + 60);
+					System.out.println("health apres : "+Main.scene.hero.getHealth());
+					Main.scene.hero.itemInInventory[slotNbSelected].name = "";
+					break;
+				case "PO":
+					System.out.println("health avant : "+Main.scene.hero.getHealth());
+					Main.scene.hero.setHealth(Main.scene.hero.getHealth() + 100);
+					System.out.println("health apres : "+Main.scene.hero.getHealth());
+					Main.scene.hero.itemInInventory[slotNbSelected].name = "";
+					break;
+				case "RDW":
+					int equipSlot = 0;
+					while(Main.scene.hero.equipedItem[equipSlot].name != "" && equipSlot < 1) {
+						equipSlot++;
+					}
+					if(Main.scene.hero.equipedItem[equipSlot].name == "") {
+						Main.scene.hero.equipedItem[equipSlot] = Main.scene.hero.itemInInventory[slotNbSelected];
+						
+						Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].dmg);
+						
+						Main.scene.hero.itemInInventory[slotNbSelected] = new Item();
+					}	
+					break;
+				case "RDG":
+					int equipSlot2 = 0;
+					while(Main.scene.hero.equipedItem[equipSlot2].name != "" && equipSlot2 < 1) {
+						equipSlot2++;
+					}
+					if(Main.scene.hero.equipedItem[equipSlot2].name == "") {
+						Main.scene.hero.equipedItem[equipSlot2] = Main.scene.hero.itemInInventory[slotNbSelected];
+						
+						
+						Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].dmg);
+						
+						Main.scene.hero.itemInInventory[slotNbSelected] = new Item();
+					}	
+					break;
+				case "RDB":
+					int equipSlot3 = 0;
+					while(Main.scene.hero.equipedItem[equipSlot3].name != "" && equipSlot3 < 1) {
+						equipSlot3++;
+					}
+					if(Main.scene.hero.equipedItem[equipSlot3].name == "") {
+						Main.scene.hero.equipedItem[equipSlot3] = Main.scene.hero.itemInInventory[slotNbSelected];
+						
+						
+						Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].dmg);
+						
+						Main.scene.hero.itemInInventory[slotNbSelected] = new Item();
+					}	
+					break;
+				case "RDP":
+					int equipSlot5 = 0;
+					while(Main.scene.hero.equipedItem[equipSlot5].name != "" && equipSlot5 < 1) {
+						equipSlot5++;
+					}
+					if(Main.scene.hero.equipedItem[equipSlot5].name == "") {
+						Main.scene.hero.equipedItem[equipSlot5] = Main.scene.hero.itemInInventory[slotNbSelected];
+						
+						
+						Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].dmg);
+						
+						Main.scene.hero.itemInInventory[slotNbSelected] = new Item();
+					}	
+					break;
+				case "RDO":
+					int equipSlot6 = 0;
+					while(Main.scene.hero.equipedItem[equipSlot6].name != "" && equipSlot6 < 1) {
+						equipSlot6++;
+					}
+					if(Main.scene.hero.equipedItem[equipSlot6].name == "") {
+						Main.scene.hero.equipedItem[equipSlot6] = Main.scene.hero.itemInInventory[slotNbSelected];
+						
+						
+						Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].dmg);
+						
+						Main.scene.hero.itemInInventory[slotNbSelected] = new Item();
+					}	
+					break;
+				case "":
+					System.out.println("item vide rien ne se passe !");
+					break;
+				}
+				itemDescription.setText(null);
+				Main.scene.hero.itemInInventory[slotNbSelected]= new Item();
+				deleteIcon();
+				Main.scene.showDetailItem = false;
+			}
+			
+		});
 	}
 	
-	public static void itemUsed(int slotNb) {
-		switch(Main.scene.hero.itemInInventory[slotNb].name) {
-		case "P":
+	public void deleteIcon() {
+		switch(slotNbSelected) {
+		case 0: 
+			btnInventory1.setIcon(null);
+			break;
+		case 1:
+			btnInventory2.setIcon(null);
+			break;
+		case 2:
+			btnInventory3.setIcon(null);
+			break;
+		case 3:
+			btnInventory4.setIcon(null);
+			break;
+		case 4:
+			btnInventory5.setIcon(null);
+			break;
+		case 5:
+			btnInventory6.setIcon(null);
+			break;
+		case 6:
+			btnInventory7.setIcon(null);
+			break;
+		case 7:
+			btnInventory8.setIcon(null);
+			break;
+		case 8:
+			btnInventory9.setIcon(null);
+			break;
+		case 9:
+			btnInventory10.setIcon(null);
+			break;
 			
-			System.out.println("health avant : "+Main.scene.hero.getHealth());
-			Main.scene.hero.setHealth(Main.scene.hero.getHealth() + 10);
-			System.out.println("health apres : "+Main.scene.hero.getHealth());
-			Main.scene.hero.itemInInventory[slotNb].name = "";
-			break;
-		case "RDW":
-			int equipSlot = 0;
-			while(Main.scene.hero.equipedItem[equipSlot].name != "" && equipSlot < 1) {
-				equipSlot++;
-			}
-			if(Main.scene.hero.equipedItem[equipSlot].name == "") {
-				Main.scene.hero.equipedItem[equipSlot] = Main.scene.hero.itemInInventory[slotNb];
-				
-				Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNb].dmg);
-				
-				Main.scene.hero.itemInInventory[slotNb] = new RuneDmg();
-			}
-			
-			break;
-		case "":
-			System.out.println("item vide rien ne se passe !");
-			break;
 		}
 	}
+	
 
+	
 }

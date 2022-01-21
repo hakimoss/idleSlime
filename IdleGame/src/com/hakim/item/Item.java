@@ -1,12 +1,12 @@
 package com.hakim.item;
 
-
-
+import java.awt.Image;
 
 public class Item {
 	public String name;
 	public String rarity;
 	public int dmg;
+	public Image img;
 	
 	public Item() {
 		this.name = "";

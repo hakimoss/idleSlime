@@ -44,22 +44,26 @@ public class Upgrade {
 		
 		
 		btnDmg=new JButton();
-		btnDmg.setContentAreaFilled(false);
+		
+
+		//btnDmg.setContentAreaFilled(false);
 		btnDmg.setFocusPainted(false);
 		btnDmg.setBorder(new RoundedBorder(3));
-		btnDmg.setForeground(Color.BLUE);
+		btnDmg.setForeground(Color.BLACK);
+		btnDmg.setBackground(Color.decode("#605c5e"));
 		
 		btnHealth = new JButton();
-		btnHealth.setContentAreaFilled(false);
 		btnHealth.setFocusPainted(false);
 		btnHealth.setBorder(new RoundedBorder(3));
-		btnHealth.setForeground(Color.BLUE);
+		btnHealth.setForeground(Color.BLACK);
+		btnHealth.setBackground(Color.decode("#605c5e"));
 		
 		btnHealthRegen = new JButton();
-		btnHealthRegen.setContentAreaFilled(false);
+		//btnHealthRegen.setContentAreaFilled(false);
 		btnHealthRegen.setFocusPainted(false);
 		btnHealthRegen.setBorder(new RoundedBorder(3));
-		btnHealthRegen.setForeground(Color.BLUE);
+		btnHealthRegen.setForeground(Color.BLACK);
+		btnHealthRegen.setBackground(Color.decode("#605c5e"));
 		
 		btnSave = new JButton("SAVE");
 		btnSave.setContentAreaFilled(false);
@@ -69,7 +73,6 @@ public class Upgrade {
 
 		btnStats = new JLabel();
 		btnStats.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/statsIcon.png")).getImage().getScaledInstance(45, 40, Image.SCALE_SMOOTH)));
-		//btnStats = new JLabel(new ImageIcon(getClass().getResource("/images/icon/statsIcon.png")));
 		
 		btnFarm = new JLabel();
 		btnFarm.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/farmIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
@@ -87,10 +90,11 @@ public class Upgrade {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(hero.getGold() >= hero.getDmg()*10) {
-					hero.setGold(hero.getGold()-(hero.getDmg()*10));
-					hero.setDmg(hero.getDmg()+1);
-					btnDmg.setText("DMG " + hero.getDmg()*10);
+				if(hero.getGold() >= hero.getDmgAvantEquip()*10) {
+					hero.setGold(hero.getGold()-(hero.getDmgAvantEquip()*10));
+					hero.setDmg(hero.getDmgAvantEquip()+1);
+					hero.setDmgAvantEquip(hero.getDmgAvantEquip()+1);
+					btnDmg.setText("DMG " + hero.getDmgAvantEquip()*10);
 				}
 			}		
 		});
@@ -125,7 +129,7 @@ public class Upgrade {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Profil p = new Profil(Main.scene.hero.getEmail(), Main.scene.hero.getStageMax(), Main.scene.hero.getHealthLvl(), Main.scene.hero.getHealthRegen(), Main.scene.hero.getDmg(), Main.scene.hero.getGold());
+				Profil p = new Profil(Main.scene.hero.getEmail(), Main.scene.hero.getStageMax(), Main.scene.hero.getHealthLvl(), Main.scene.hero.getHealthRegen(), Main.scene.hero.getDmg(), Main.scene.hero.getDmgAvantEquip(), Main.scene.hero.getGold());
 				LogIn logIn = new LogIn();
 				try {
 					logIn.saveAccount(p);
@@ -246,7 +250,6 @@ public class Upgrade {
 				btnStats.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/statsIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
 				btnInventory.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/inventoryIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
 				btnEquipement.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/equipementIcon.png")).getImage().getScaledInstance(45, 40, Image.SCALE_SMOOTH)));
-
 				
 				exit = true;
 				Main.scene.relic = false;
@@ -254,21 +257,13 @@ public class Upgrade {
 				Main.scene.farm = false;
 				Main.scene.inventoryIcon = false;
 				Main.scene.equipement = true;
-				
-			
-				
 
 				Main.changeScreentoScene();
 		    }
-		});
-		
-		
+		});	
 		
 	}
-	
-	
 
-	
 	//   GETTERS   //
 	public static boolean isExit() {return exit;}
 

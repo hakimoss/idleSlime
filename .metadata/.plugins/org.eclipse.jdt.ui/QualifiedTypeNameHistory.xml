@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="com.hakim.personnages.Enemi"/>
     <fullyQualifiedTypeName name="com.hakim.Combat"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.hakim.personnages.Hero"/>
     <fullyQualifiedTypeName name="java.net.URL"/>
     <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
@@ -21,13 +20,10 @@
     <fullyQualifiedTypeName name="com.hakim.logIn.CreateAccountPanel"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="com.hakim.logIn.LogIn"/>
-    <fullyQualifiedTypeName name="com.hakim.Main"/>
     <fullyQualifiedTypeName name="com.hakim.personnages.Flamme"/>
-    <fullyQualifiedTypeName name="javax.swing.JButton"/>
     <fullyQualifiedTypeName name="javax.swing.JPanel"/>
     <fullyQualifiedTypeName name="com.hakim.SelecteHeroScreen"/>
     <fullyQualifiedTypeName name="com.hakim.Scene"/>
-    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="com.hakim.logIn.LoginPanel"/>
     <fullyQualifiedTypeName name="com.hakim.Profil"/>
     <fullyQualifiedTypeName name="com.hakim.personnages.Personnages"/>
@@ -35,13 +31,31 @@
     <fullyQualifiedTypeName name="com.hakim.HeroFarm"/>
     <fullyQualifiedTypeName name="com.hakim.Chrono"/>
     <fullyQualifiedTypeName name="com.hakim.ChronoSelectedCharatere"/>
-    <fullyQualifiedTypeName name="com.hakim.gameplay.Upgrade"/>
     <fullyQualifiedTypeName name="javax.swing.JPasswordField"/>
     <fullyQualifiedTypeName name="javax.swing.BorderFactory"/>
     <fullyQualifiedTypeName name="java.awt.event.MouseEvent"/>
     <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
-    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
-    <fullyQualifiedTypeName name="java.awt.Image"/>
-    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
     <fullyQualifiedTypeName name="com.hakim.personnages.Golem"/>
+    <fullyQualifiedTypeName name="com.hakim.inventory.InventoryHandler"/>
+    <fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
+    <fullyQualifiedTypeName name="java.awt.Color"/>
+    <fullyQualifiedTypeName name="com.hakim.inventory.Inventory"/>
+    <fullyQualifiedTypeName name="com.hakim.gameplay.Upgrade"/>
+    <fullyQualifiedTypeName name="com.hakim.equipement.EquipementHandler"/>
+    <fullyQualifiedTypeName name="com.hakim.equipement.Equipement"/>
+    <fullyQualifiedTypeName name="com.hakim.Main"/>
+    <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.hakim.equipement.DmgEquipement"/>
+    <fullyQualifiedTypeName name="com.hakim.item.Potion"/>
+    <fullyQualifiedTypeName name="java.awt.Image"/>
+    <fullyQualifiedTypeName name="com.hakim.item.Item"/>
+    <fullyQualifiedTypeName name="com.hakim.item.RuneDmg"/>
+    <fullyQualifiedTypeName name="javax.swing.JButton"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="javax.swing.Icon"/>
+    <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+    <fullyQualifiedTypeName name="java.awt.Insets"/>
 </qualifiedTypeNameHistroy>

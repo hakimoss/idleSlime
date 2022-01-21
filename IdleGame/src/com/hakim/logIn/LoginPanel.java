@@ -78,8 +78,6 @@ public class LoginPanel extends JPanel {
 		
 		this.add(labelErrorMsg);
 		
-		
-		
 	
 		btnCreateAccount.addActionListener(new ActionListener() {
 
