@@ -1,5 +1,0 @@
-package com.hakim.item;
-
-public class RuneDmg extends Item {
-
-}

@@ -1,0 +1,68 @@
+package com.hakim.equipement;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import com.hakim.Main;
+import com.hakim.inventory.Inventory;
+
+
+
+
+public class EquipementHandler implements ActionListener {
+
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String yourChoice = e.getActionCommand();
+		
+		switch(yourChoice) {
+		case "equip1":
+			//Equipement.unequipe(0);
+			Equipement.slotNbSelected = 0;
+			Main.scene.showDetailItem = true;
+			Main.equipement.btnEquipement1.setIcon(null);
+			System.out.println("name : "+Main.scene.hero.itemInInventory[0].name);
+			switch(Main.scene.hero.itemInInventory[0].name) {
+			case "PW":
+				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Potion</span> <br>10 hp</p></html>");				
+				break;
+			case "PG":
+				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Potion</span> <br>20 hp</p></html>");				
+				break;
+			case "PB":
+				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Potion</span> <br>30 hp</p></html>");				
+				break;
+			case "PP":
+				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Potion</span> <br>60 hp</p></html>");				
+				break;
+			case "PO":
+				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Potion</span> <br>100 hp</p></html>");				
+				break;
+			case "RDW":
+				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].dmg+"</p></html>");		
+				break;	
+			case "RDG":
+				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].dmg+"</p></html>");		
+				break;
+			case "RDB":
+				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].dmg+"</p></html>");		
+				break;
+			case "RDP":
+				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].dmg+"</p></html>");		
+				break;
+			case "RDO":
+				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].dmg+"</p></html>");		
+				break;
+			}
+			break;
+		case "equip2":
+			Equipement.unequipe(1);
+			//Main.equipement.btnEquipement2.setIcon(null);
+			break;
+		
+
+		}
+	}
+
+}

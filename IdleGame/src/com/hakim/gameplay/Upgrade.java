@@ -24,9 +24,13 @@ import com.hakim.personnages.Hero;
 public class Upgrade {
 	
 	public JButton btnDmg;
+	public JButton btnCritChance;
+	public JButton btnCritDmg;
 	public JButton btnHealth;
-	public JButton btnSave;
 	public JButton btnHealthRegen;
+	public JButton btnDefence;
+	
+	public JButton btnSave;
 	
 	public JLabel btnStats;
 	public JLabel btnFarm;
@@ -37,20 +41,27 @@ public class Upgrade {
 	public Thread chrono;	
 	
 	private static boolean exit = true;
-	
-	
 
 	public Upgrade(Hero hero) {
 		
 		
-		btnDmg=new JButton();
-		
-
-		//btnDmg.setContentAreaFilled(false);
+		btnDmg=new JButton();		
 		btnDmg.setFocusPainted(false);
 		btnDmg.setBorder(new RoundedBorder(3));
 		btnDmg.setForeground(Color.BLACK);
 		btnDmg.setBackground(Color.decode("#605c5e"));
+		
+		btnCritChance=new JButton();		
+		btnCritChance.setFocusPainted(false);
+		btnCritChance.setBorder(new RoundedBorder(3));
+		btnCritChance.setForeground(Color.BLACK);
+		btnCritChance.setBackground(Color.decode("#605c5e"));
+		
+		btnCritDmg=new JButton();		
+		btnCritDmg.setFocusPainted(false);
+		btnCritDmg.setBorder(new RoundedBorder(3));
+		btnCritDmg.setForeground(Color.BLACK);
+		btnCritDmg.setBackground(Color.decode("#605c5e"));
 		
 		btnHealth = new JButton();
 		btnHealth.setFocusPainted(false);
@@ -59,11 +70,16 @@ public class Upgrade {
 		btnHealth.setBackground(Color.decode("#605c5e"));
 		
 		btnHealthRegen = new JButton();
-		//btnHealthRegen.setContentAreaFilled(false);
 		btnHealthRegen.setFocusPainted(false);
 		btnHealthRegen.setBorder(new RoundedBorder(3));
 		btnHealthRegen.setForeground(Color.BLACK);
 		btnHealthRegen.setBackground(Color.decode("#605c5e"));
+		
+		btnDefence = new JButton();
+		btnDefence.setFocusPainted(false);
+		btnDefence.setBorder(new RoundedBorder(3));
+		btnDefence.setForeground(Color.BLACK);
+		btnDefence.setBackground(Color.decode("#605c5e"));
 		
 		btnSave = new JButton("SAVE");
 		btnSave.setContentAreaFilled(false);
@@ -87,20 +103,53 @@ public class Upgrade {
 		btnEquipement.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/equipementIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
 		
 		btnDmg.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(hero.getGold() >= hero.getDmgAvantEquip()*10) {
 					hero.setGold(hero.getGold()-(hero.getDmgAvantEquip()*10));
-					hero.setDmg(hero.getDmgAvantEquip()+1);
+					hero.setDmg(hero.getDmg()+1);
 					hero.setDmgAvantEquip(hero.getDmgAvantEquip()+1);
 					btnDmg.setText("DMG " + hero.getDmgAvantEquip()*10);
 				}
 			}		
 		});
 		
-		btnHealth.addActionListener(new ActionListener() {
+		btnCritChance.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				int value = 0;
+				if(Main.scene.hero.equipedItem[0].stats1 == "C") {value = value + Main.scene.hero.equipedItem[0].stats1Value;}
+				if(Main.scene.hero.equipedItem[1].stats1 == "C") {value = value + Main.scene.hero.equipedItem[1].stats1Value;}
+				
+				if(hero.getGold() >= (hero.getCritChance()-value)*50) {
+					hero.setGold(hero.getGold()-((hero.getCritChance()-value)*50));
+					hero.setCritChance(hero.getCritChance()+1);
+					btnCritChance.setText("CRIT CHANCE " + (hero.getCritChance()-value)*50);
+				}
+			}
 			
+		});
+		
+		btnCritDmg.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int value = 0;
+				if(Main.scene.hero.equipedItem[0].stats1 == "I") {value = value + Main.scene.hero.equipedItem[0].stats1Value;}
+				if(Main.scene.hero.equipedItem[1].stats1 == "I") {value = value + Main.scene.hero.equipedItem[1].stats1Value;}
+				
+				if(hero.getGold() >= (hero.getCritDmg()-value*50)) {
+					hero.setGold(hero.getGold()-((hero.getCritDmg()-value)*50));
+					hero.setCritDmg(hero.getCritDmg()+1);
+					btnCritDmg.setText("CRIT DMG " + (hero.getCritDmg()-value)*50);
+				}
+			}
+			
+		});
+		
+		btnHealth.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(hero.getGold() >= hero.getHealthLvl()*20) {
@@ -125,11 +174,24 @@ public class Upgrade {
 			
 		});
 		
+		btnDefence.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(hero.getGold() >= hero.getDefence()*50) {
+					hero.setGold(hero.getGold()-(hero.getDefence()*50));
+					hero.setDefence(hero.getDefence()+1);
+					btnDefence.setText("DEFENCE " +hero.getDefence()*50);
+				}
+			}
+			
+		});
+		
 		btnSave.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Profil p = new Profil(Main.scene.hero.getEmail(), Main.scene.hero.getStageMax(), Main.scene.hero.getHealthLvl(), Main.scene.hero.getHealthRegen(), Main.scene.hero.getDmg(), Main.scene.hero.getDmgAvantEquip(), Main.scene.hero.getGold());
+				Profil p = new Profil(Main.scene.hero.getEmail(), Main.scene.hero.getStageMax(), Main.scene.hero.getHealthLvl(), Main.scene.hero.getHealthRegen(), Main.scene.hero.getDefence(), Main.scene.hero.getDmg(), Main.scene.hero.getCritChance(), Main.scene.hero.getCritDmg(), Main.scene.hero.getDmgAvantEquip(), Main.scene.hero.getGold());
 				LogIn logIn = new LogIn();
 				try {
 					logIn.saveAccount(p);

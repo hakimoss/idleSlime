@@ -41,19 +41,49 @@ public class InventoryHandler implements ActionListener {
 				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Potion</span> <br>100 hp</p></html>");				
 				break;
 			case "RDW":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[0].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[0].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[0].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				}
 				break;	
 			case "RDG":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[0].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[0].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[0].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDB":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[0].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[0].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[0].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDP":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[0].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[0].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[0].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDO":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[0].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[0].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[0].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[0].stats1Value+"</p></html>");		
+				}
 				break;
 			}
 			break;
@@ -78,19 +108,49 @@ public class InventoryHandler implements ActionListener {
 				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Potion</span> <br>100 hp</p></html>");				
 				break;
 			case "RDW":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[1].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[1].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[1].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[1].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				}				
 				break;	
 			case "RDG":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[1].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[1].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[1].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[1].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDB":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[1].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[1].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[1].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[1].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDP":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[1].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[1].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[1].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[1].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDO":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[1].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[1].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[1].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[1].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[1].stats1Value+"</p></html>");		
+				}
 				break;
 			}
 			break;
@@ -115,19 +175,49 @@ public class InventoryHandler implements ActionListener {
 				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Potion</span> <br>100 hp</p></html>");				
 				break;
 			case "RDW":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[2].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[2].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[2].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[2].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				}
 				break;	
 			case "RDG":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[2].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[2].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[2].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[2].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDB":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[2].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[2].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[2].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[2].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDP":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[2].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[2].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[2].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[2].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDO":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[2].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[2].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[2].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[2].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[2].stats1Value+"</p></html>");		
+				}
 				break;
 			}
 			break;
@@ -152,19 +242,49 @@ public class InventoryHandler implements ActionListener {
 				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Potion</span> <br>100 hp</p></html>");				
 				break;
 			case "RDW":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[3].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[3].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[3].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[3].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				}
 				break;	
 			case "RDG":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[3].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[3].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[3].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[3].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDB":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[3].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[3].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[3].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[3].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDP":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[3].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[3].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[3].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[3].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDO":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[3].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[3].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[3].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[3].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[3].stats1Value+"</p></html>");		
+				}
 				break;
 			}
 			break;
@@ -189,19 +309,49 @@ public class InventoryHandler implements ActionListener {
 				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Potion</span> <br>100 hp</p></html>");				
 				break;
 			case "RDW":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[4].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[4].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[4].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[4].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				}
 				break;	
 			case "RDG":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[4].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[4].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[4].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[4].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDB":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[4].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[4].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[4].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[4].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDP":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[4].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[4].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[4].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[4].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDO":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[4].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[4].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[4].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[4].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[4].stats1Value+"</p></html>");		
+				}
 				break;
 			}
 			break;
@@ -226,19 +376,49 @@ public class InventoryHandler implements ActionListener {
 				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Potion</span> <br>100 hp</p></html>");				
 				break;
 			case "RDW":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[5].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[5].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[5].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[5].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				}
 				break;	
 			case "RDG":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[5].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[5].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[5].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[5].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDB":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[5].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[5].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[5].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[5].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDP":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[5].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[5].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[5].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[5].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDO":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[5].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[5].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[5].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[5].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[5].stats1Value+"</p></html>");		
+				}
 				break;
 			}
 			break;
@@ -263,19 +443,49 @@ public class InventoryHandler implements ActionListener {
 				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Potion</span> <br>100 hp</p></html>");				
 				break;
 			case "RDW":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[6].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[6].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[6].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[6].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				}
 				break;	
 			case "RDG":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[6].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[6].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[6].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[6].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDB":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[6].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[6].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[6].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[6].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDP":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[6].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[6].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[6].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[6].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDO":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[6].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[6].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[6].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[6].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[6].stats1Value+"</p></html>");		
+				}
 				break;
 			}
 			break;
@@ -300,19 +510,49 @@ public class InventoryHandler implements ActionListener {
 				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Potion</span> <br>100 hp</p></html>");				
 				break;
 			case "RDW":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[7].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[7].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[7].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[7].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				}
 				break;	
 			case "RDG":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[7].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[7].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[7].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[7].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDB":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[7].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[7].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[7].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[7].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDP":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[7].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[7].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[7].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[7].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDO":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[7].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[7].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[7].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[7].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[7].stats1Value+"</p></html>");		
+				}
 				break;
 			}
 			break;
@@ -337,19 +577,49 @@ public class InventoryHandler implements ActionListener {
 				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Potion</span> <br>100 hp</p></html>");				
 				break;
 			case "RDW":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[8].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[8].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[8].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[8].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				}
 				break;	
 			case "RDG":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[8].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[8].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[8].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[8].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDB":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[8].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[8].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[8].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[8].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDP":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[8].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[8].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[8].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[8].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDO":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[8].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[8].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[8].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[8].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[8].stats1Value+"</p></html>");		
+				}
 				break;
 			}
 			break;
@@ -374,19 +644,49 @@ public class InventoryHandler implements ActionListener {
 				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Potion</span> <br>100 hp</p></html>");				
 				break;
 			case "RDW":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[9].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[9].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[9].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[9].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffffff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				}
 				break;	
 			case "RDG":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[9].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[9].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[9].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[9].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#75da5f;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDB":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[9].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[9].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[9].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[9].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#1383ff;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDP":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[9].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[9].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[9].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[9].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ee2bc1;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				}
 				break;
 			case "RDO":
-				Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[9].dmg+"</p></html>");		
+				if(Main.scene.hero.itemInInventory[9].stats1 == "A") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Damage : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[9].stats1 == "C") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Chance : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				} else if(Main.scene.hero.itemInInventory[9].stats1 == "I") {
+					Main.inventory.itemDescription.setText("<html><p><span style='color:#ffbc3a;'>Red Rune</span> <br> Crit Damage : "+Main.scene.hero.itemInInventory[9].stats1Value+"</p></html>");		
+				}
 				break;
 			}
 			break;

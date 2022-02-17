@@ -29,7 +29,6 @@ public class Inventory {
 
 	public static int slotNbSelected;
 
-	
 	public Inventory() {
 		InventoryHandler iHandler = new InventoryHandler();
 		
@@ -37,8 +36,7 @@ public class Inventory {
 		btnInventory1.setBackground(Color.decode("#827575"));
 		btnInventory1.setFocusPainted(false);
 		btnInventory1.addActionListener(iHandler);
-		btnInventory1.setActionCommand("item1");
-		
+		btnInventory1.setActionCommand("item1");	
 		btnInventory2 = new JButton();
 		btnInventory2.setBackground(Color.decode("#827575"));
 		btnInventory2.setFocusPainted(false);
@@ -94,21 +92,7 @@ public class Inventory {
 		
 		btnDelete.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				String example = "RDG/DMG/10";
-				System.out.println("item : "+example);
-				System.out.println("stats : "+example.substring(example.lastIndexOf("/") - 3));
-				System.out.println("valeur : "+example.substring(example.lastIndexOf("/") + 1));
-				if(example.startsWith("RDG")) {
-					System.out.println("donne une rune rouge de rareté verte");
-					if(example.substring(example.lastIndexOf("/") - 3).startsWith("DMG")) {
-						System.out.println("la rune a une stat de DMG");
-						System.out.println("la rune a une valeu de dmg de : " +example.substring(example.lastIndexOf("/") + 1));
-					}
-				}
-				
-				
+			public void actionPerformed(ActionEvent e) {	
 				Main.scene.hero.itemInInventory[slotNbSelected]= new Item();
 
 				Main.scene.showDetailItem = false;	
@@ -153,13 +137,20 @@ public class Inventory {
 					break;
 				case "RDW":
 					int equipSlot = 0;
+					System.out.println(Main.scene.hero.itemInInventory[slotNbSelected].stats1);
 					while(Main.scene.hero.equipedItem[equipSlot].name != "" && equipSlot < 1) {
 						equipSlot++;
 					}
 					if(Main.scene.hero.equipedItem[equipSlot].name == "") {
 						Main.scene.hero.equipedItem[equipSlot] = Main.scene.hero.itemInInventory[slotNbSelected];
-						
-						Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].dmg);
+
+						if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "A") {
+							Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						} else if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "C") {
+							Main.scene.hero.setCritChance(Main.scene.hero.getCritChance() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						} else if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "I") {
+							Main.scene.hero.setCritDmg(Main.scene.hero.getCritDmg() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						}
 						
 						Main.scene.hero.itemInInventory[slotNbSelected] = new Item();
 					}	
@@ -171,10 +162,14 @@ public class Inventory {
 					}
 					if(Main.scene.hero.equipedItem[equipSlot2].name == "") {
 						Main.scene.hero.equipedItem[equipSlot2] = Main.scene.hero.itemInInventory[slotNbSelected];
-						
-						
-						Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].dmg);
-						
+
+						if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "A") {
+							Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						} else if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "C") {
+							Main.scene.hero.setCritChance(Main.scene.hero.getCritChance() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						} else if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "I") {
+							Main.scene.hero.setCritDmg(Main.scene.hero.getCritDmg() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						}						
 						Main.scene.hero.itemInInventory[slotNbSelected] = new Item();
 					}	
 					break;
@@ -187,12 +182,36 @@ public class Inventory {
 						Main.scene.hero.equipedItem[equipSlot3] = Main.scene.hero.itemInInventory[slotNbSelected];
 						
 						
-						Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].dmg);
-						
+						if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "A") {
+							Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						} else if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "C") {
+							Main.scene.hero.setCritChance(Main.scene.hero.getCritChance() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						} else if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "I") {
+							Main.scene.hero.setCritDmg(Main.scene.hero.getCritDmg() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						}						
 						Main.scene.hero.itemInInventory[slotNbSelected] = new Item();
 					}	
 					break;
 				case "RDP":
+					int equipSlot4 = 0;
+					while(Main.scene.hero.equipedItem[equipSlot4].name != "" && equipSlot4 < 1) {
+						equipSlot4++;
+					}
+					if(Main.scene.hero.equipedItem[equipSlot4].name == "") {
+						Main.scene.hero.equipedItem[equipSlot4] = Main.scene.hero.itemInInventory[slotNbSelected];
+						
+						
+						if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "A") {
+							Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						} else if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "C") {
+							Main.scene.hero.setCritChance(Main.scene.hero.getCritChance() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						} else if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "I") {
+							Main.scene.hero.setCritDmg(Main.scene.hero.getCritDmg() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						}						
+						Main.scene.hero.itemInInventory[slotNbSelected] = new Item();
+					}	
+					break;
+				case "RDO":
 					int equipSlot5 = 0;
 					while(Main.scene.hero.equipedItem[equipSlot5].name != "" && equipSlot5 < 1) {
 						equipSlot5++;
@@ -201,22 +220,13 @@ public class Inventory {
 						Main.scene.hero.equipedItem[equipSlot5] = Main.scene.hero.itemInInventory[slotNbSelected];
 						
 						
-						Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].dmg);
-						
-						Main.scene.hero.itemInInventory[slotNbSelected] = new Item();
-					}	
-					break;
-				case "RDO":
-					int equipSlot6 = 0;
-					while(Main.scene.hero.equipedItem[equipSlot6].name != "" && equipSlot6 < 1) {
-						equipSlot6++;
-					}
-					if(Main.scene.hero.equipedItem[equipSlot6].name == "") {
-						Main.scene.hero.equipedItem[equipSlot6] = Main.scene.hero.itemInInventory[slotNbSelected];
-						
-						
-						Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].dmg);
-						
+						if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "A") {
+							Main.scene.hero.setDmg(Main.scene.hero.getDmg() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						} else if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "C") {
+							Main.scene.hero.setCritChance(Main.scene.hero.getCritChance() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						} else if(Main.scene.hero.itemInInventory[slotNbSelected].stats1 == "I") {
+							Main.scene.hero.setCritDmg(Main.scene.hero.getCritDmg() + Main.scene.hero.itemInInventory[slotNbSelected].stats1Value);
+						}						
 						Main.scene.hero.itemInInventory[slotNbSelected] = new Item();
 					}	
 					break;

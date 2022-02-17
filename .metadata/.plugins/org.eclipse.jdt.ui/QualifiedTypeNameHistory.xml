@@ -48,14 +48,14 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.hakim.equipement.DmgEquipement"/>
-    <fullyQualifiedTypeName name="com.hakim.item.Potion"/>
     <fullyQualifiedTypeName name="java.awt.Image"/>
-    <fullyQualifiedTypeName name="com.hakim.item.Item"/>
-    <fullyQualifiedTypeName name="com.hakim.item.RuneDmg"/>
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="javax.swing.JLabel"/>
     <fullyQualifiedTypeName name="javax.swing.Icon"/>
     <fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
     <fullyQualifiedTypeName name="java.awt.Insets"/>
+    <fullyQualifiedTypeName name="com.hakim.item.RuneDmg"/>
+    <fullyQualifiedTypeName name="com.hakim.item.Item"/>
+    <fullyQualifiedTypeName name="com.hakim.item.Potion"/>
 </qualifiedTypeNameHistroy>

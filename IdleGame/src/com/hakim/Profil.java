@@ -11,8 +11,11 @@ public class Profil implements Serializable {
 	private int stage;
 	private int dmg;
 	private int dmgAvantEquip;
+	private int critChance;
+	private int critDmg;
 	private int health;
 	private int healthRegen;
+	private int defence;
 	private int gold;
 	private String selectedHero;
 
@@ -31,7 +34,13 @@ public class Profil implements Serializable {
 	
 	public int getDmgAvantEquip() {return dmgAvantEquip;}
 	
+	public int getCritChance() {return critChance;}
+	
+	public int getCritDmg() {return critDmg;}
+	
 	public int getHealth() {return health;}
+	
+	public int getDefence() {return defence;}
 	
 	public int getGold() {return gold;}
 	
@@ -54,7 +63,13 @@ public class Profil implements Serializable {
 	
 	public void setDmgAvantEquip(int dmgAvantEquip) {this.dmgAvantEquip = dmgAvantEquip;}
 	
+	public void setCritChance(int critChance) {this.critChance = critChance;}
+
+	public void setCritDmg(int critDmg) {this.critDmg = critDmg;}
+	
 	public void setHealth(int health) {this.health = health;}
+	
+	public void setDefence(int defence) {this.defence = defence;}
 	
 	public void setGold(int gold) {this.gold = gold;}
 	
@@ -84,14 +99,17 @@ public class Profil implements Serializable {
 		this.name = name;
 	
 	}
-	public Profil(String email, int stage, int health, int healthRegen, int dmg, int dmgAvantEquip, int gold) {
+	public Profil(String email, int stage, int health, int healthRegen, int defence, int dmg, int critChance, int critDmg, int dmgAvantEquip, int gold) {
 		super();
 		this.email = email;
 		this.stage = stage;
 		this.health = health;
 		this.healthRegen = healthRegen;
+		this.defence = defence;
 		this.dmg = dmg;
 		this.dmgAvantEquip = dmgAvantEquip;
+		this.critChance = critChance;
+		this.critDmg = critDmg;
 		this.gold = gold;
 	}
 	

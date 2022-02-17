@@ -127,7 +127,10 @@ public class Main {
 		frame.setContentPane(Main.scene);
 		Main.scene.add(Main.scene.upgrade.btnHealth);
 		Main.scene.add(Main.scene.upgrade.btnHealthRegen);
+		Main.scene.add(Main.scene.upgrade.btnDefence);
 		Main.scene.add(Main.scene.upgrade.btnDmg);
+		Main.scene.add(Main.scene.upgrade.btnCritChance);
+		Main.scene.add(Main.scene.upgrade.btnCritDmg);
 		Main.scene.add(Main.scene.upgrade.btnSave);
 		Main.scene.add(Main.scene.upgrade.btnStats);
 		Main.scene.add(Main.scene.upgrade.btnFarm);
@@ -155,15 +158,20 @@ public class Main {
 		if(Main.scene.stats == false) {
 			Main.scene.upgrade.btnDmg.setVisible(false);
 			Main.scene.upgrade.btnHealth.setVisible(false);
+			Main.scene.upgrade.btnDefence.setVisible(false);
 			Main.scene.upgrade.btnSave.setVisible(false);
 			Main.scene.upgrade.btnHealthRegen.setVisible(false);
+			Main.scene.upgrade.btnCritChance.setVisible(false);
+			Main.scene.upgrade.btnCritDmg.setVisible(false);
 		
 		} else {
 			Main.scene.upgrade.btnDmg.setVisible(true);
 			Main.scene.upgrade.btnHealth.setVisible(true);
+			Main.scene.upgrade.btnDefence.setVisible(true);
 			Main.scene.upgrade.btnSave.setVisible(true);
 			Main.scene.upgrade.btnHealthRegen.setVisible(true);
-	
+			Main.scene.upgrade.btnCritChance.setVisible(true);
+			Main.scene.upgrade.btnCritDmg.setVisible(true);
 		}
 
 	}

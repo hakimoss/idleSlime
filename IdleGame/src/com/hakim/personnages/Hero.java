@@ -23,7 +23,10 @@ public class Hero extends Personnages {
 	private int health;
 	private int healthLvl;
 	private int healthRegen;
+	private int defence;
 	private int dmg;
+	private int critChance;
+	private int critDmg;
 	private int dmgAvantEquip;
 	private int gold;
 	private int dmgPrice;
@@ -34,8 +37,6 @@ public class Hero extends Personnages {
 	private boolean slimFeu;
 	private boolean slimEau;
 
-	
-	
 	private boolean libre;
 	private boolean enCombat;
 
@@ -54,23 +55,28 @@ public class Hero extends Personnages {
 		this.icoHero = new ImageIcon(getClass().getResource("/images/hero1Droite.png"));
 		this.imgHero = this.icoHero.getImage();
 		this.libre = true;
-		//RuneDmg runeDamage1 = new RuneDmg("RDW", "white", 3);
 		
 		this.healthLvl = 1;
 		this.health = 90;
 		this.healthRegen = 1;
+		this.defence = 0;
 		this.dmg = 2;
+		this.critChance = 0;
+		this.critDmg = 1;
 		this.dmgAvantEquip = 2;
 		this.enCombat = false;
 		this.gold = 0;
 		this.dmgPrice = this.dmg*10;
 		this.stageMax = 0;
+		
 		this.email = null;
 		this.playerName = null;
 		this.selectedHero = null;
+		
 		this.slimHerbe = false;
 		this.slimFeu = false;
 		this.slimEau = false;
+		
 		this.itemInInventory[0] = new Item();
 		this.itemInInventory[1] = new Item();
 		this.itemInInventory[2] = new Item();
@@ -81,7 +87,6 @@ public class Hero extends Personnages {
 		this.itemInInventory[7] = new Item();
 		this.itemInInventory[8] = new Item();
 		this.itemInInventory[9] = new Item();
-		
 		
 		this.equipedItem[0] = new RuneDmg();	
 		this.equipedItem[1] = new RuneDmg();
@@ -95,7 +100,21 @@ public class Hero extends Personnages {
 	
 	public int getHealth() {return health;}
 	
+	public int getHealthLvl() {return healthLvl;}
+	
+	public int getHealthRegen() {return healthRegen;}
+	
+	public int getDefence() {return defence;}
+	
 	public int getDmg() {return dmg;}
+	
+	public void setCritChance(int critChance) {this.critChance = critChance;}
+	
+	public void setCritDmg(int critDmg) {this.critDmg = critDmg;}
+	
+	public int getCritChance() {return critChance;}
+	
+	public int getCritDmg() {return critDmg;}
 	
 	public int getDmgAvantEquip() {return dmgAvantEquip;}
 	
@@ -104,8 +123,6 @@ public class Hero extends Personnages {
 	public int getGold() {return gold;}
 	
 	public int getDmgPrice() {return dmgPrice;}
-
-	public int getHealthLvl() {return healthLvl;}
 
 	public int getStageMax() {return stageMax;}
 
@@ -123,12 +140,17 @@ public class Hero extends Personnages {
 	
 	public boolean isSlimEau() {return slimEau;}
 
-	public int getHealthRegen() {return healthRegen;}
 	
 	//   SETTERS   //
 	public void setLibre(boolean libre) {this.libre = libre;}
 	
 	public void setHealth(int health) {this.health = health;}
+	
+	public void setHealthLvl(int healthLvl) {this.healthLvl = healthLvl;}
+	
+	public void setHealthRegen(int healthRegen) {this.healthRegen = healthRegen;}
+
+	public void setDefence(int defence) {this.defence = defence;}
 	
 	public void setDmg(int dmg) {this.dmg = dmg;}
 	
@@ -139,8 +161,6 @@ public class Hero extends Personnages {
 	public void setGold(int gold) {this.gold = gold;}
 
 	public void setDmgPrice(int dmgPrice) {this.dmgPrice = dmgPrice;}
-
-	public void setHealthLvl(int healthLvl) {this.healthLvl = healthLvl;}
 	
 	public void setStageMax(int stageMax) {this.stageMax = stageMax;}
 
@@ -158,7 +178,6 @@ public class Hero extends Personnages {
 
 	public void setSlimEau(boolean slimEau) {this.slimEau = slimEau;}
 
-	public void setHealthRegen(int healthRegen) {this.healthRegen = healthRegen;}
 
 	//   METHODS   //
 	public void contact(Personnages personnage) {

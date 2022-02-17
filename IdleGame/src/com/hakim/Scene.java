@@ -63,7 +63,11 @@ public class Scene extends JPanel {
 	
 	private JLabel labelHealth;
 	private JLabel labelHealthRegen;
+	private JLabel labelDefence;
 	private JLabel labelDmg;
+	private JLabel labelCritChance;
+	private JLabel labelCritDmg;
+	
 	private JLabel labelGold;
 	private JLabel labelRelicHerbe;
 	private JLabel labelRelicFeu;
@@ -118,15 +122,25 @@ public class Scene extends JPanel {
 		labelHealth.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/hearthIcon.png")).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH)));
 		labelHealth.setBounds(10, 350, 64, 64);
 		
-		
 		labelHealthRegen = new JLabel();
 		labelHealthRegen.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/hearthRegenIcon.png")).getImage().getScaledInstance(64, 64, Image.SCALE_SMOOTH)));
 		labelHealthRegen.setBounds(10, 400, 64, 64);
 		
+		labelDefence = new JLabel();
+		labelDefence.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/shieldIcon.png")).getImage().getScaledInstance(54, 54, Image.SCALE_SMOOTH)));
+		labelDefence.setBounds(16, 460, 54, 54);
 		
 		labelDmg = new JLabel();
 		labelDmg.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/dmgIcon.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
-		labelDmg.setBounds(25, 460, 40, 40);
+		labelDmg.setBounds(300, 365, 40, 40);
+		
+		labelCritChance = new JLabel();
+		labelCritChance.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/critChanceIcon.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+		labelCritChance.setBounds(300, 415, 40, 40);
+		
+		labelCritDmg = new JLabel();
+		labelCritDmg.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/critDmgIcon.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH)));
+		labelCritDmg.setBounds(300, 465, 40, 40);
 		
 		
 		labelGold = new JLabel();
@@ -174,14 +188,23 @@ public class Scene extends JPanel {
 	
 		upgrade = new Upgrade(hero);
 		
-		upgrade.btnHealth.setBounds(150, 375, 100, 35);
+		upgrade.btnHealth.setBounds(150, 370, 100, 35);
 		this.add(upgrade.btnHealth);
 		
-		upgrade.btnHealthRegen.setBounds(150, 425, 100, 35);
+		upgrade.btnHealthRegen.setBounds(150, 420, 100, 35);
 		this.add(upgrade.btnHealthRegen);
 		
-		upgrade.btnDmg.setBounds(150, 475, 100, 35);
+		upgrade.btnDefence.setBounds(150, 470, 100, 35);
+		this.add(upgrade.btnDefence);
+
+		upgrade.btnDmg.setBounds(400, 370, 100, 35);
 		this.add(upgrade.btnDmg);
+		
+		upgrade.btnCritChance.setBounds(400, 420, 100, 35);
+		this.add(upgrade.btnCritChance);
+		
+		upgrade.btnCritDmg.setBounds(400, 470, 100, 35);
+		this.add(upgrade.btnCritDmg);
 
 		//if(this.hero.isSlimHerbe() == true || this.hero.isSlimFeu() == true || this.hero.isSlimEau() == true) 
 		
@@ -457,12 +480,25 @@ public class Scene extends JPanel {
 				upgrade.btnDmg.setIcon(new ImageIcon(goldImage));
 				upgrade.btnHealth.setIcon(new ImageIcon(goldImage));
 				upgrade.btnHealthRegen.setIcon(new ImageIcon(goldImage));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+				upgrade.btnDefence.setIcon(new ImageIcon(goldImage));
+				upgrade.btnCritChance.setIcon(new ImageIcon(goldImage));
+				upgrade.btnCritDmg.setIcon(new ImageIcon(goldImage));
+			} catch (IOException e) {e.printStackTrace();}
+			
+			int valueCritChance = 0;
+			int valueCritDmg = 0;
+			if(Main.scene.hero.equipedItem[0].stats1 == "C") {valueCritChance = valueCritChance + Main.scene.hero.equipedItem[0].stats1Value;}
+			if(Main.scene.hero.equipedItem[1].stats1 == "C") {valueCritChance = valueCritChance + Main.scene.hero.equipedItem[1].stats1Value;}
+			if(Main.scene.hero.equipedItem[0].stats1 == "I") {valueCritDmg = valueCritDmg + Main.scene.hero.equipedItem[0].stats1Value;}
+			if(Main.scene.hero.equipedItem[1].stats1 == "I") {valueCritDmg = valueCritDmg + Main.scene.hero.equipedItem[1].stats1Value;}
+			
 			upgrade.btnDmg.setText("<html><p style='margin-right:15px;'>" + this.hero.getDmgAvantEquip()*10+"</p></html>");
+			upgrade.btnCritChance.setText("<html><p style='margin-right:15px;'>" + (hero.getCritChance()-valueCritChance)*50+"</p></html>");
+			upgrade.btnCritDmg.setText("<html><p style='margin-right:15px;'>" + (hero.getCritDmg()-valueCritDmg)*50+"</p></html>");
 			upgrade.btnHealth.setText("<html><p style='margin-right:15px;'>" + hero.getHealthLvl()*20+"</p></html>");
 			upgrade.btnHealthRegen.setText("<html><p style='margin-right:15px;'>" + hero.getHealthRegen()*50+"</p></html>");
+			upgrade.btnDefence.setText("<html><p style='margin-right:15px;'>" + hero.getDefence()*50+"</p></html>");
+			
 
 			upgrade.btnRelic.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
 			upgrade.btnFarm.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/farmIcon.png")).getImage().getScaledInstance(40, 35, Image.SCALE_SMOOTH)));
@@ -473,10 +509,16 @@ public class Scene extends JPanel {
 			upgrade.btnDmg.setVisible(true);
 			upgrade.btnHealth.setVisible(true);
 			upgrade.btnHealthRegen.setVisible(true);
+			upgrade.btnDefence.setVisible(true);
+			upgrade.btnCritChance.setVisible(true);
+			upgrade.btnCritDmg.setVisible(true);
 
 			this.add(labelHealth);
 			this.add(labelDmg);
 			this.add(labelHealthRegen);
+			this.add(labelDefence);
+			this.add(labelCritChance);
+			this.add(labelCritDmg);
 			
 		}  else if(this.relic == true) {
 			upgrade.btnRelic.setIcon(new ImageIcon(new ImageIcon(getClass().getResource("/images/icon/relicIcon.png")).getImage().getScaledInstance(45, 40, Image.SCALE_SMOOTH)));
@@ -489,10 +531,16 @@ public class Scene extends JPanel {
 			upgrade.btnDmg.setVisible(false);
 			upgrade.btnHealth.setVisible(false);
 			upgrade.btnHealthRegen.setVisible(false);
+			upgrade.btnDefence.setVisible(false);
+			upgrade.btnCritChance.setVisible(false);
+			upgrade.btnCritDmg.setVisible(false);
 			
 			this.remove(labelHealth);
 			this.remove(labelHealthRegen);
 			this.remove(labelDmg);
+			this.remove(labelDefence);
+			this.remove(labelCritChance);
+			this.remove(labelCritDmg);
 
 		} else if(this.inventoryIcon == true) {
 		
@@ -506,13 +554,17 @@ public class Scene extends JPanel {
 			upgrade.btnDmg.setVisible(false);
 			upgrade.btnHealth.setVisible(false);
 			upgrade.btnHealthRegen.setVisible(false);
-			
+			upgrade.btnDefence.setVisible(false);
+			upgrade.btnCritChance.setVisible(false);
+			upgrade.btnCritDmg.setVisible(false);
+
 			this.remove(labelHealth);
 			this.remove(labelHealthRegen);
 			this.remove(labelDmg);
-			
-			
-			
+			this.remove(labelDefence);
+			this.remove(labelCritChance);
+			this.remove(labelCritDmg);
+
 			Main.inventory.btnInventory1.setBounds(80, 380, 50, 50);
 			Main.inventory.btnInventory2.setBounds(180, 380, 50, 50);
 			Main.inventory.btnInventory3.setBounds(280, 380, 50, 50);
@@ -932,17 +984,42 @@ public class Scene extends JPanel {
 			upgrade.btnDmg.setVisible(false);
 			upgrade.btnHealth.setVisible(false);
 			upgrade.btnHealthRegen.setVisible(false);
+			upgrade.btnDefence.setVisible(false);
+			upgrade.btnCritChance.setVisible(false);
+			upgrade.btnCritDmg.setVisible(false);
+
 			
 			this.remove(labelHealth);
 			this.remove(labelHealthRegen);
 			this.remove(labelDmg);
-			
+			this.remove(labelDefence);
+			this.remove(labelCritChance);
+			this.remove(labelCritDmg);
+
 			Main.equipement.btnEquipement1.setBounds(80, 380, 50, 50);
 			Main.equipement.btnEquipement2.setBounds(180, 380, 50, 50);
+			
+			Main.equipement.btnDelete.setBounds(80, 500, 100, 20);
+			Main.equipement.btnUnequipe.setBounds(180, 500, 100, 20);
+			Main.equipement.itemDescription.setBounds(600, 250, 200, 300);
 			
 			this.add(Main.equipement.btnEquipement1);
 			this.add(Main.equipement.btnEquipement2);
 			
+			this.add(Main.equipement.btnDelete);
+			this.add(Main.equipement.btnUnequipe);
+			this.add(Main.equipement.itemDescription);
+			
+			if(showDetailItem == true) {
+				Main.equipement.btnDelete.setVisible(true);
+				Main.equipement.btnUnequipe.setVisible(true);
+				Main.equipement.itemDescription.setVisible(true);
+			} else {
+				Main.equipement.btnDelete.setVisible(false);
+				Main.equipement.btnUnequipe.setVisible(false);
+				Main.equipement.itemDescription.setVisible(false);
+			}
+
 			RuneDmg runeDmgWhite = new RuneDmg("white");
 			RuneDmg runeDmgGreen = new RuneDmg("green");
 			RuneDmg runeDmgBlue = new RuneDmg("blue");
@@ -1133,13 +1210,13 @@ public class Scene extends JPanel {
 			//healthRegen
 			g2.drawString(""+this.hero.getHealthRegen() , 70, 440);
 			
-			g2.drawString("" + this.hero.getDmg(), 70, 490);
+			g2.drawString(""+this.hero.getDefence(), 70, 490);
 			
+			g2.drawString("" + this.hero.getDmg(), 360, 390);
 			
+			g2.drawString("" + this.hero.getCritChance(), 360, 440);
 			
-			//g2.drawString(this.hero.getDmg()*10+" Gold", 60, 490);
-			
-			//g2.drawString(this.hero.getHealthLvl()*20+" Gold", 175, 490);
+			g2.drawString("" + this.hero.getCritDmg(), 360, 490);
 			
 			g2.drawString(gameSavedString, 495, 490);
 		} else if(this.relic == true) {
